@@ -215,73 +215,107 @@ Phản biện nhận được (từ AI hoặc nhóm khác) và nhóm có đồng
 -
 
 ---
+---
 
 ## 6. Mức can thiệp AI (CP6)
 
+> **Trạng thái:** Bản đề xuất để nhóm rà soát và tự chốt. CP4 hiện có 0 cuộc phỏng vấn, 0 mẫu tài liệu được kiểm tra; CP5 chưa có quy trình chi tiết và Problem Statement v0. Vì vậy, các mục dưới đây phân biệt dữ liệu đang có, giả thuyết và ngưỡng thử nghiệm đề xuất; chưa phải kết quả kiểm chứng.
+
 ### 6.1. Ma trận độ mơ hồ × độ phức tạp
 
-Bài của nhóm nằm ở ô:
+| Độ phức tạp | Độ mơ hồ thấp | Độ mơ hồ cao |
+|---|---|---|
+| **Độ phức tạp thấp** | Kiểm tra ticket có đủ trường bắt buộc hay không: Rule có thể đủ. | Tóm tắt một gói nguồn đã được người chọn: có thể thử Workflow. |
+| **Độ phức tạp cao** | Đối chiếu nhiều nguồn theo danh sách và quy tắc rõ. | **Bài toán đầy đủ của nhóm:** tìm và xác minh lý do/ràng buộc của logic cũ từ nhiều nguồn. |
 
-Vì sao:
+**Bài toán đầy đủ nằm ở ô mơ hồ cao × phức tạp cao, theo mô tả ban đầu ở CP2–CP3:**
+
+- **Mơ hồ cao:** lý do nằm trong ngôn ngữ tự nhiên, có thể là đề xuất chưa chốt, quyết định đã chốt hoặc nội dung đã bị thay thế; cần hiểu bối cảnh. Có nhiều cách tóm tắt chấp nhận được, nhưng sự kiện lịch sử vẫn phải có nguồn chứng minh.
+- **Phức tạp cao:** cần nối ticket/spec với Slack, biên bản và Git; bước xác minh ràng buộc phụ thuộc kết quả tìm nguồn. Quyền truy cập và mức đầy đủ của các nguồn này chưa được kiểm chứng.
+- Vị trí trên ma trận **không tự động dẫn đến chọn Agent**. Trước hết cần kiểm tra nguyên nhân: thông tin **đã ghi nhưng rải rác**, hay lý do **chưa từng được ghi**. Trường hợp thứ hai cần người có trách nhiệm xác nhận; AI không thể khôi phục một lý do chưa có trong dữ liệu thành sự thật lịch sử.
+
+**Thu hẹp vòng kiểm chứng đầu:** một dự án, một loại yêu cầu đổi logic, dùng Decision Log do BA/PO và dev đối chiếu thủ công. Đồng thời ghi lý do/ràng buộc ngay khi chốt quyết định mới. Chưa mở bài toán tìm kiếm tự động trên toàn bộ lịch sử dự án.
 
 ### 6.2. So sánh 4 mức
 
 | Mức | Phương án cho bài của nhóm | Đủ khi nào | Rủi ro | Chọn? |
 |---|---|---|---|---|
-| **No AI** (sửa quy trình) | | | | |
-| **Rule** | | | | |
-| **Workflow** | | | | |
-| **Agent** | | | | |
+| **No AI** (sửa quy trình) | BA/PO ghi Decision Log gắn với ticket: quyết định, lý do, ràng buộc, nguồn, thời điểm/phiên bản, người xác nhận, trạng thái. Với quyết định cũ, BA/PO và dev lập chỉ mục từ nguồn còn tồn tại; ghi rõ phần chưa biết. | Người dùng tìm đúng ngữ cảnh đủ nhanh và không bỏ sót ràng buộc quan trọng; chi phí ghi/duyệt chấp nhận được. Chưa có kết quả thử. | Không phục hồi được lý do chưa từng ghi; có thể bỏ qua template hoặc mất công bổ sung lịch sử. | **Chọn để kiểm chứng trước.** |
+| **Rule** | Kiểm tra các trường bắt buộc và trạng thái duyệt trước khi chuyển ticket sang bước tiếp theo; nhắc bổ sung nếu thiếu. | Đã có template hữu ích, nhưng dữ liệu thử cho thấy lỗi chính là quên điền hoặc thiếu trường. | Có thể điền cho đủ hình thức; Rule không đánh giá được lý do đúng hay ràng buộc đủ chưa. Chưa xác nhận khả năng cấu hình công cụ. | Chưa chọn; chỉ thêm nếu có bằng chứng cần. |
+| **Workflow** | Các bước cố định: người có quyền chọn gói nguồn cho một ticket → AI nháp lý do/ràng buộc kèm nguồn → BA/PO xác minh → dev đối chiếu ảnh hưởng → người lưu bản đã duyệt. | No AI/Rule vẫn không đạt metric vì việc đọc và tổng hợp **nguồn đã tồn tại** còn tốn thời gian; có dữ liệu, quyền sử dụng và bộ eval. | Bịa lý do, bỏ sót ràng buộc, dùng quyết định lỗi thời; thời gian kiểm tra có thể lớn hơn thời gian tiết kiệm. | Hướng thử tiếp theo có điều kiện. |
+| **Agent** | AI tự chọn nơi tìm, công cụ, truy vấn và bước tiếp theo để lần theo lịch sử quyết định. | Có bằng chứng Workflow cố định không đủ và thực sự cần AI tự quyết đường tìm kiếm. | Khó kiểm soát phạm vi, chi phí và khả năng kết luận sai từ lịch sử thiếu/mâu thuẫn. | Chưa chọn; chưa chứng minh cần vượt Workflow. |
 
-**Mức chọn:**
+**Mức chọn hiện tại: No AI, cho vòng kiểm chứng nhỏ.** Đây là lựa chọn thiết kế tạm thời; quyết định triển khai chính thức vẫn là **Not Yet** ở mục 8.
 
-**Vì sao không chọn mức đơn giản hơn:**
+**Vì sao không chọn mức đơn giản hơn:** No AI là mức thấp nhất trong bốn mức. Khác với giữ nguyên cách làm hiện tại, phương án này gắn trách nhiệm ghi nhận và xác nhận lý do với từng quyết định để kiểm tra trực tiếp giả thuyết gốc: thiếu ghi chép có cấu trúc có phải nguyên nhân chính không?
+
+**Vì sao chưa nâng mức:** chưa có bằng chứng template thủ công thất bại, chưa đo phần việc Rule có thể giải quyết và chưa kiểm tra chất lượng nguồn cho AI. Không thể kết luận No AI giải được 70–80% trường hợp, cũng chưa thể kết luận Workflow là mức tối thiểu. Ưu tiên ghi nhận quyết định có cấu trúc phù hợp với pattern trong [Atlassian Decision documentation template](https://www.atlassian.com/software/confluence/templates/decision/); mức phù hợp với team phải được thử riêng.
 
 ### 6.3. AI Canvas rút gọn
 
-| Thành phần | Nội dung |
-|---|---|
-| **Prediction** — AI dự đoán / tạo ra gì? | |
-| **Judgment** — con người cân nhắc, quyết định gì? | |
-| **Action** — hành động cuối cùng là gì, ai làm? | |
-| **Outcome** — đo kết quả bằng gì? | |
-| **Input** — AI cần dữ liệu đầu vào gì mỗi lần chạy? Có sẵn không? | |
-| **Feedback** — lấy phản hồi ở đâu để cải thiện? | |
+**Không áp dụng cho mức No AI đang chọn**, theo ngoại lệ tại [worksheet CP6](../../docs/01-worksheet.md#nếu-nhóm-chọn-no-ai-hoặc-rule). Chưa có bước AI dự đoán hay tạo nội dung; BA/PO và dev đọc nguồn, ghi nhận và xác minh quyết định. Việc thêm AI chỉ được cân nhắc khi có bằng chứng bước tổng hợp thủ công vẫn là bottleneck sau khi đã thử cách đơn giản hơn.
 
 ### 6.4. Hai câu hỏi của Google PAIR
 
-- Người dùng muốn **được hỗ trợ (augment)** hay **giao hẳn việc (automate)**? Bằng chứng:
-- AI sai kiểu nào tệ hơn, **báo nhầm** hay **bỏ sót**? Vì sao, và thiết kế đã xử lý thế nào:
+**Không bắt buộc áp dụng với No AI.** Hiện chưa có phỏng vấn để khẳng định người dùng muốn augment hay automate.
+
+Nếu đủ điều kiện thử Workflow sau này, **giả thuyết thiết kế** là augment: AI chỉ nháp, BA/PO xác nhận nghiệp vụ, dev xác nhận ảnh hưởng kỹ thuật. Với nhiệm vụ phát hiện ràng buộc ảnh hưởng đến thay đổi, **bỏ sót** có thể gây hồi quy hoặc vi phạm cam kết; **báo nhầm** làm tăng công kiểm tra. Đây là đánh giá rủi ro ban đầu cần kiểm chứng, không phải kết quả phỏng vấn. Bịa lý do lịch sử là lỗi không được chấp nhận; thiếu hoặc mâu thuẫn nguồn phải chuyển người xác minh.
 
 ---
 
 ## 7. Problem Statement v1 + tiêu chí đánh giá (CP6)
 
+### 7.1. Problem Statement v1 — bản đề xuất
+
+**Phát biểu bài toán:** Khi khách yêu cầu thay đổi một logic cũ, BA/PO và dev cần tìm lại được lý do, ràng buộc và trạng thái hiệu lực của quyết định trước khi chốt cách sửa. Hiện thông tin được mô tả là rải rác hoặc thiếu phần lý do, khiến bước tra cứu/xác minh mất khoảng 40 phút theo ước tính cá nhân và có nguy cơ bỏ sót ràng buộc. Nhóm đề xuất kiểm chứng Decision Log và đối chiếu nguồn thủ công trước khi quyết định có cần AI hay không.
+
 | Trường | Nội dung |
 |---|---|
-| **Actor** | |
-| **Quy trình** | |
-| **Bottleneck** | |
-| **Impact** | |
-| **Success Metric** (baseline → target, cách đo) | |
-| **Boundary** | |
-| **AI intervention point** | |
-| **Mức chọn** | No AI / Rule / Workflow / Agent |
-| **Rủi ro & người kiểm tra** | |
+| **Actor** | Team làm việc được mô tả trong Card #1 của Hiếu: 2 BA/PO và 3 dev. Mỗi yêu cầu cần BA/PO phụ trách nghiệp vụ và dev phụ trách phần bị ảnh hưởng xác nhận. |
+| **Quy trình** | Nhận yêu cầu đổi → đọc ticket/spec → tìm Decision Log và nguồn gốc → BA/PO cùng dev kiểm tra lý do, ràng buộc, phiên bản → ghi kết luận đã xác nhận hoặc đánh dấu chưa đủ bằng chứng → mới chốt phương án sửa và kiểm tra hồi quy. Quyết định mới được ghi vào log ngay khi chốt. |
+| **Bottleneck** | Bước tìm lại lịch sử khoảng 25 phút và trao đổi xác minh khoảng 15 phút; tổng khoảng 40 phút/lần, **ước tính từ CP2, chưa đo ở CP4**. Không gộp thời gian code/test vào metric tra cứu. |
+| **Impact** | Tần suất ước tính 1–2 lần/tháng; có thể chậm chốt phương án và phải làm lại khi hiểu sai ràng buộc. Chưa có số bug, số lần rework hoặc chi phí thiệt hại được xác minh. |
+| **Success Metric** (baseline → target, cách đo) | Metric chất lượng chính, thời gian phụ và cách đo được định nghĩa ở mục 7.2. Baseline thực đo chưa có; các target là ngưỡng đề xuất để thử nghiệm, chưa phải kết quả đã đạt. |
+| **Boundary** | Chỉ dùng tài liệu người thực hiện có quyền truy cập. Mỗi khẳng định về lịch sử phải dẫn nguồn; phân biệt quyết định cũ với xác nhận mới. Thiếu nguồn, nguồn mâu thuẫn hoặc thiếu người có thẩm quyền xác nhận thì ghi “chưa đủ bằng chứng”, chuyển BA/PO xử lý và chưa chốt thay đổi. Dev vẫn review ảnh hưởng và kiểm tra hồi quy. |
+| **AI intervention point** | **Không có trong vòng kiểm chứng đang chọn.** Chưa chứng minh lợi ích tăng thêm của AI so với template và đối chiếu thủ công. |
+| **Mức chọn** | **No AI** — Decision Log, checklist và người kiểm tra. Rule/Workflow chỉ được xem xét sau khi có dữ liệu cho thấy mức dưới chưa đủ. |
+| **Rủi ro & người kiểm tra** | Lý do ghi lại có thể sai, thiếu ràng buộc hoặc đã lỗi thời: BA/PO xác minh nghiệp vụ, dev đối chiếu kỹ thuật. Người quyết định ban đầu được hỏi lại nếu cần; nếu không liên hệ được thì giữ trạng thái chưa xác minh. Người quản lý dự án xác nhận phạm vi dữ liệu và người duy trì log trước khi thử với dữ liệu nội bộ. Đây là phân công đề xuất theo vai trò, chưa phải cam kết đã nhận. |
 
-**Thay đổi so với v0 và lý do:**
+### 7.2. Success Metric và cách đo
+
+| Chỉ số | Baseline hiện có | Target đề xuất | Cách đo |
+|---|---|---|---|
+| **Chính — bug/rework do bỏ sót hoặc hiểu sai ràng buộc cũ** | Chưa biết; cần rà ticket và phỏng vấn về 6–12 tháng gần nhất. Chưa được coi là 0. | Hướng tới 0 ca/quý sau khi áp dụng; chưa thể xác nhận bằng một thử nghiệm ngắn. | BA/PO và dev cùng xác nhận nguyên nhân từng ca, ghi số yêu cầu đổi logic làm mẫu số. Theo dõi theo quý; không suy diễn từ việc chưa thấy lỗi trong 2 tuần. |
+| **Chất lượng trong thử nghiệm — xác minh đúng lý do/ràng buộc** | Chưa có bộ ca chuẩn. | Mọi ca được đánh dấu “đã xác minh” phải có nguồn và không thiếu ràng buộc quan trọng trong bản đối chiếu; ca thiếu/mâu thuẫn nguồn phải được nhận diện. | BA/PO và dev lập bản đối chiếu trước từ tài liệu được phép dùng. Chấm 5 tiêu chí tại mục 7.4; một ca không đạt nếu trượt bất kỳ tiêu chí nào. |
+| **Phụ — thời gian tra cứu và xác minh mỗi yêu cầu** | Khoảng 40 phút/lần, là ước tính CP2 cho bước 3–4. | Ít nhất 8/10 ca có đủ nguồn được xác minh đúng trong **dưới 10 phút/ca**. | Bấm giờ từ lúc bắt đầu tìm lý do đến lúc có kết luận xác minh; gồm tìm, đọc, hỏi và sửa log nếu cần, không gồm code/test. Đo thời gian trôi qua, không nhân với cả 5 người. Ca chưa giải được vẫn ghi nhận và không tính đạt tốc độ. |
+| **Chi phí duy trì log** | Chưa đo. | Thời gian chủ động ghi và duyệt một quyết định mới không quá 5 phút/ca; báo cáo riêng thời gian bổ sung lịch sử. | Ghi phút làm việc của từng người, gồm soạn và review; cộng thành công sức duy trì. Nếu chưa có quyết định mới trong thời gian thử thì ghi thiếu mẫu, không kết luận đạt. |
+
+**Thiết kế đo đề xuất:** chọn 10 yêu cầu lịch sử có đủ nguồn, kèm ít nhất 2 tình huống thiếu hoặc mâu thuẫn nguồn để kiểm tra cách xử lý. Đo cách cũ trước khi lập log; ghi riêng công sức tạo log và kiểm tra. Khi so sánh, đổi người đọc hoặc dùng ca tương đương để giảm việc nhớ đáp án. Báo cáo kết quả theo từng ca, cỡ mẫu và hạn chế; không coi đây là thử nghiệm chứng minh quan hệ nhân quả. Với tần suất ước tính 1–2 lần/tháng, không kỳ vọng có đủ 10 yêu cầu mới trong 2 tuần.
+
+### 7.3. Đối chiếu với v0 và lý do bổ sung
+
+**Mục 5 hiện chưa có v0**, nên chưa thể báo cáo một thay đổi v0 → v1 đã diễn ra. Bảng sau ghi khoảng trống và nội dung v1 đề xuất; nhóm cần hoàn thành CP5 rồi đối chiếu lại trước khi nộp.
 
 | Trường | v0 | v1 | Vì sao đổi |
 |---|---|---|---|
-| | | | |
+| Success Metric | Chưa lập; CP2 mới có ước tính khoảng 40 phút và mục tiêu dưới 10 phút. | Tách metric chất lượng, tốc độ và công duy trì; thêm mẫu số, cách đo và nhãn “chưa đo”. | Tránh nhanh hơn nhưng xác minh sai, hoặc tiết kiệm thời gian tra cứu bằng cách tăng quá nhiều công ghi chép. |
+| Boundary | Chưa lập. | Thiếu/mâu thuẫn nguồn phải đánh dấu; phân biệt bằng chứng lịch sử với xác nhận mới; BA/PO và dev kiểm tra. | Không biến suy đoán thành lý do cũ và không bỏ bước review trước khi sửa logic. |
+| AI intervention point, mức chọn | Chưa lập; CP2 còn cân nhắc No AI hoặc Workflow. | Không có bước AI; chọn No AI cho vòng kiểm chứng đầu. | Chưa có bằng chứng phương án đơn giản hơn không đủ. |
+| Rủi ro & người kiểm tra | Chưa lập. | Nêu vai trò xác minh nghiệp vụ, kỹ thuật và phạm vi dữ liệu. | Một bản log đầy đủ trường chưa đồng nghĩa đúng hoặc còn hiệu lực. |
 
-**Tiêu chí đánh giá đầu ra của AI (3–5 tiêu chí):**
+### 7.4. Tiêu chí đánh giá giải pháp No AI
+
+Theo [rubric C9–C10](../../RUBRIC.md), khi chọn No AI, eval được viết cho template/checklist và kết quả xác minh của con người.
+
+Ca thiếu/mâu thuẫn nguồn có thể đạt eval nếu được nhận diện đúng và chuyển sang trạng thái chờ xác minh; không phải điền các trường chưa biết cho đủ. Ca đó vẫn **không tính là đã giải quyết đúng trong ngưỡng tốc độ** và chưa được dùng làm căn cứ sửa logic.
 
 | # | Tiêu chí | Đạt khi | Không đạt khi |
 |---:|---|---|---|
-| 1 | | | |
-| 2 | | | |
-| 3 | | | |
+| 1 | **Truy được nguồn, không đoán lý do** | Mỗi lý do/ràng buộc được ghi là sự thật lịch sử có nguồn hỗ trợ trực tiếp. Xác nhận mới được ghi ngày và người có thẩm quyền theo vai trò. | Viết suy đoán như quyết định cũ; có link nhưng nội dung không hỗ trợ kết luận. |
+| 2 | **Đủ ràng buộc quan trọng** | Bao phủ toàn bộ ràng buộc được BA/PO và dev đánh dấu quan trọng trong bản đối chiếu, hoặc ghi rõ phần chưa xác minh và dừng chốt thay đổi. | Bỏ sót ràng buộc quan trọng nhưng vẫn ghi “đủ để sửa”. |
+| 3 | **Đúng trạng thái và phiên bản** | Ca đã xác minh ghi được thời điểm, quyết định đã chốt/đã bị thay thế và phạm vi áp dụng. Nếu chưa xác định được trạng thái/phiên bản, nêu rõ trường chưa biết và giữ “chờ xác minh”. | Dùng đề xuất chưa chốt hoặc quyết định hết hiệu lực làm căn cứ hiện tại; tự điền phiên bản khi chưa có bằng chứng. |
+| 4 | **Xử lý thiếu/mâu thuẫn thông tin** | Chỉ rõ phần chưa biết hoặc nguồn xung đột, chuyển BA/PO xác minh; không tự kết luận hai nguồn đã thống nhất. | Điền cho đủ template, che mất mâu thuẫn hoặc coi không tìm thấy là không có ràng buộc. |
+| 5 | **Đúng phạm vi và có người kiểm tra** | Chỉ dùng nguồn được phép. Ca đã xác minh có vai trò/ngày duyệt của BA/PO và dev trước khi chốt cách sửa. Ca chưa xác minh ghi người tiếp nhận theo vai trò và trạng thái chờ, không ghi là đã duyệt. | Dùng nguồn ngoài quyền; chốt cách sửa khi thiếu một bên xác nhận; hoặc lấy log chưa duyệt làm căn cứ sửa. |
 
 ---
 
@@ -289,33 +323,48 @@ Vì sao:
 
 ### 8.1. Bốn rủi ro
 
+Đánh giá dưới đây áp dụng cho **phương án No AI đang đề xuất**, dựa trên dữ liệu hiện có; chưa phải đánh giá sau thử nghiệm.
+
 | Rủi ro | Câu hỏi | Mức độ rủi ro (Thấp = an toàn / TB / Cao = nguy hiểm) | Lý do / bằng chứng |
 |---|---|---|---|
-| **Value** | Người dùng có thật sự cần và sẽ dùng không? | | |
-| **Usability** | Người dùng có dùng được, có hiểu và sửa được đầu ra của AI không? | | |
-| **Feasibility** | Có đủ dữ liệu, công cụ, kỹ năng để làm không? | | |
-| **Viability** | Có hợp chi phí, pháp lý, quy định tổ chức không? Ai vận hành? | | |
+| **Value** | Người dùng có thật sự cần và sẽ dùng không? | **Cao** | CP4 có 0 phỏng vấn, chưa có ca rework được xác minh; thời gian và tần suất mới là ước tính từ người đưa ra candidate. Chưa biết lợi ích có bù công ghi/duyệt log không. Cần kiểm tra điều kiện nhóm đã đặt ở CP3: có ít nhất 1 ca rework cụ thể do thiếu ngữ cảnh. |
+| **Usability** | Người dùng có dùng được, hiểu và sửa được log không? | **Trung bình** | Template đơn giản nhưng chưa quan sát BA/PO và dev thực hiện; có thể khó phân biệt lý do, ràng buộc, đề xuất và quyết định đã chốt. Thử bằng nhiệm vụ tìm lại ngữ cảnh và đối chiếu nguồn. |
+| **Feasibility** | Có đủ dữ liệu, công cụ, kỹ năng để làm không? | **Trung bình** | Có thể bắt đầu bằng Markdown/bảng thủ công, chưa cần tích hợp. Tuy nhiên chưa kiểm tra mẫu nguồn; lý do chưa từng được ghi không thể phục hồi bằng log hay AI. Cần kiểm kê khả năng truy cập và mức đầy đủ của tài liệu. |
+| **Viability** | Có hợp chi phí, quy định tổ chức không? Ai vận hành? | **Trung bình** | Không cần mua công cụ mới cho vòng thử thủ công, nhưng chưa có người nhận duy trì và chưa xác nhận phạm vi dùng dữ liệu nội bộ. Cần người quản lý đồng ý phạm vi và đo công ghi/duyệt. Nếu dùng AI sau này, phải đánh giá lại chính sách dữ liệu và chi phí. |
 
 ### 8.2. Kết luận
 
-**Quyết định:** Go / Not Yet / No-Go
+**Quyết định đề xuất: Not Yet — chưa triển khai chính thức, chưa đầu tư xây hoặc tích hợp AI.**
 
-**Lý do:**
+**Lý do:** Value đang ở mức Cao vì chưa có kiểm chứng hành vi và hậu quả; chưa có baseline thực đo, CP5 cũng chưa hoàn thành. Đây là các khoảng trống có thể kiểm tra bằng phỏng vấn và một thử nghiệm nhỏ. Chưa chọn Go; cũng chưa đủ bằng chứng kết luận pain không đáng giải để chọn No-Go. No AI là cách kiểm chứng đầu tiên, không phải kết quả đã chứng minh đủ dùng.
 
-**Nếu Go — pilot nhỏ nhất:**
+**Việc cần làm trước, trong một vòng kiểm chứng tối đa 2 tuần:**
 
-**Nếu Not Yet — cần kiểm chứng gì trước:**
+| Việc | Vai trò phụ trách đề xuất | Bằng chứng cần có / điều kiện hoàn thành |
+|---|---|---|
+| Phỏng vấn 2–3 người thật ngoài nhóm lab, có cả BA/PO và dev; hỏi lần gần nhất đổi logic cũ, nguồn đã tìm, thời gian và hậu quả thực tế. | Người phụ trách kiểm chứng; Hiếu hỗ trợ kết nối nếu phù hợp. | Snapshot ghi vai trò, thời điểm, cách hỏi. Chủ động tìm tín hiệu phản bác như ca tìm nhanh bằng cách cũ hoặc template từng không hữu ích; ghi điều thực sự quan sát được, nếu chưa thấy thì nêu rõ. Xác minh có ít nhất 1 ca rework do thiếu ngữ cảnh theo điều kiện CP3, hoặc ghi rõ điều kiện chưa đạt. |
+| Kiểm kê tài liệu và quyền sử dụng trong một dự án. | BA/PO và người quản lý dự án. | Phân biệt “đã ghi nhưng khó tìm” với “chưa từng ghi”; xác nhận phạm vi được dùng. Chỉ ghi bản đã ẩn danh và được phép vào repo. |
+| Hoàn thành CP5 trước khi chốt v1. | Nhóm phụ trách quy trình. | Quy trình trước/sau, thời gian từng bước, baseline được gắn nguồn, boundary, phương án quay về và v0; đối chiếu lại mục 7.3. |
+| Thử Decision Log/checklist trên các ca lịch sử. | BA/PO lập log; dev đối chiếu; một người ghi số đo. | 10 ca đủ nguồn và ít nhất 2 ca thiếu/mâu thuẫn nguồn nếu được phép tiếp cận; ghi rõ số mẫu thực có, thời gian tạo log, thời gian tra cứu và kết quả 5 tiêu chí. Đây là kế hoạch, hiện có 0 ca đã thử. |
 
-**Nếu No-Go — nên làm gì thay AI:**
+**Nếu đủ điều kiện chuyển Go:** chỉ mở pilot No AI trong một dự án, một loại yêu cầu đổi logic, một cặp BA/PO–dev chịu trách nhiệm. Điều kiện: không rủi ro nào còn Cao; có phạm vi dữ liệu và người duy trì; đạt tiêu chí chất lượng và ngưỡng tốc độ ở mục 7.2. Chưa mở sang toàn công ty và chưa coi pilot ngắn là bằng chứng đã giảm bug theo quý.
 
-**Ngưỡng dừng** (nếu sau … mà … thì quay về …):
+**Khi nào cân nhắc mức cao hơn:** nếu log hữu ích nhưng thường thiếu trường do quên điền, thử Rule nhắc/kiểm tra trường trước. Nếu nguồn đã đủ, No AI/Rule vẫn không đạt tốc độ vì đọc/tổng hợp, mới lập thử nghiệm Workflow có nguồn do người chọn, eval riêng và người duyệt. Nếu không có lý do trong nguồn, hỏi người quyết định thay vì tăng mức AI.
+
+**Nếu No AI đã đủ:** giữ template, chỉ mục nguồn và kiểm tra chéo; chọn No-Go đối với việc xây AI cho phạm vi này. Nếu kiểm chứng không tìm được ca rework như điều kiện CP3, nhóm cần xem lại candidate; B là phương án dự phòng đã nêu, không tự chuyển mà bỏ qua kiểm chứng.
+
+**Ngưỡng dừng đề xuất:**
+
+- **Sau 2 tuần**, nếu vẫn chưa có tối thiểu 2 cuộc phỏng vấn hợp lệ hoặc chưa xác minh được ca rework theo điều kiện CP3, giữ Not Yet và xem lại candidate. Nếu thiếu mẫu/quyền dữ liệu, không mở pilot và không diễn giải thiếu dữ liệu thành pain đã bị bác bỏ.
+- **Dừng dùng log làm căn cứ ngay ở ca đang xét** khi có một lý do không có nguồn, một ràng buộc quan trọng bị bỏ sót hoặc một quyết định hết hiệu lực được ghi là hiện hành; BA/PO và dev quay về đọc nguồn/hỏi người có trách nhiệm. Ghi lỗi để sửa, chưa mở rộng áp dụng.
+- **Sau bộ thử đủ 10 ca có nguồn**, nếu dưới 8/10 ca được xác minh đúng trong dưới 10 phút, không coi No AI đạt mục tiêu tốc độ. Phân loại nguyên nhân trước khi quyết định sửa template, thêm Rule hay thử Workflow.
+- Nếu công duy trì vượt 5 phút/ca hoặc công bổ sung lịch sử lấn át lợi ích, thu hẹp loại quyết định cần ghi và đo lại; chưa tăng mức tự động hóa chỉ để bù một quy trình chưa hữu ích. Nếu chưa có mẫu quyết định mới, chỉ báo thiếu dữ liệu cho chỉ số này.
 
 ---
 
 ## 9. Hạn chế và hướng tiếp theo
 
--
-
 ## 10. Tài liệu tham khảo
+
 
 -
