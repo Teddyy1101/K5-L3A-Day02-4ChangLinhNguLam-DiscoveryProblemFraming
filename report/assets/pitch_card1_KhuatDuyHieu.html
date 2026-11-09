@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ai Nhớ Vì Sao?</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#faf8f3; --panel:#ffffff; --line:#e3ded3; --ink:#1d1f24; --mute:#6b7080;
+  --amber:#c4860f; --red:#d23f2e; --teal:#1a9480; --blue:#2f6fd6;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;background:var(--bg);color:var(--ink);font-family:'Be Vietnam Pro',sans-serif;overflow:hidden}
+.mono{font-family:'JetBrains Mono',monospace}
+#stage{position:absolute;width:1280px;height:720px;left:50%;top:50%;transform-origin:center}
+.slide{position:absolute;inset:0;padding:64px 80px;opacity:0;pointer-events:none;display:flex;flex-direction:column}
+.slide.on{opacity:1;pointer-events:auto;transform:none}
+.kicker{font-family:'JetBrains Mono',monospace;color:var(--amber);font-size:15px;letter-spacing:.15em;text-transform:uppercase;margin-bottom:14px}
+h1{font-size:76px;font-weight:800;line-height:1.05}
+h2{font-size:44px;font-weight:800;line-height:1.15;margin-bottom:28px}
+p,li{font-size:22px;line-height:1.5}
+.mute{color:var(--mute)}
+.hl{color:var(--amber)} .red{color:var(--red)} .teal{color:var(--teal)}
+.grid{display:grid;gap:24px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;box-shadow:0 2px 10px rgba(60,50,30,.06)}
+.tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:13px;padding:4px 10px;border-radius:99px;border:1px solid currentColor;margin-right:6px}
+.foot{position:absolute;bottom:26px;left:80px;right:80px;display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--mute)}
+#bar{position:fixed;left:0;bottom:0;height:4px;background:var(--amber);transition:width .3s}
+#hint{position:fixed;right:16px;bottom:12px;font:12px 'JetBrains Mono',monospace;color:var(--mute)}
+
+/* title */
+.big-q{font-size:200px;font-weight:800;color:var(--amber);line-height:.8;position:absolute;right:70px;top:110px;opacity:.9}
+.redact{background:var(--ink);color:var(--ink);padding:0 6px;border-radius:3px}
+
+/* actor */
+.actor .emoji{font-size:44px}
+.actor h3{font-size:24px;margin:10px 0 6px}
+.actor p{font-size:18px}
+
+/* timeline */
+.tl{position:relative;height:200px;margin-top:20px}
+.tl .axis{position:absolute;left:0;right:0;top:100px;height:2px;background:var(--line)}
+.tl .ev{position:absolute;top:60px;width:300px}
+.tl .dot{width:18px;height:18px;border-radius:50%;margin:31px 0 14px}
+.fade{animation:fade 3s infinite alternate}
+@keyframes fade{from{opacity:1}to{opacity:.15}}
+
+/* workflow */
+.flow{display:flex;gap:10px;align-items:stretch;margin-top:8px}
+.step{flex:1;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;position:relative}
+.step .n{font:700 14px 'JetBrains Mono',monospace;color:var(--mute)}
+.step h4{font-size:18px;margin:6px 0 10px;line-height:1.3}
+.step .t{font:700 20px 'JetBrains Mono',monospace}
+.step.hot{border-color:var(--red);box-shadow:0 0 0 1px var(--red),0 0 30px rgba(239,91,76,.25)}
+.step.hot .t{color:var(--red)}
+.timebar{display:flex;height:34px;border-radius:8px;overflow:hidden;margin-top:30px;font:700 13px 'JetBrains Mono',monospace}
+.timebar div{display:flex;align-items:center;justify-content:center;color:#111}
+
+/* iceberg */
+.berg{position:relative;height:430px;border-radius:14px;overflow:hidden;background:linear-gradient(#f1f6fb 0 32%,#cfe2ef 32% 100%);border:1px solid var(--line)}
+.berg .water{position:absolute;left:0;right:0;top:32%;height:2px;background:var(--blue);opacity:.6}
+.berg .above{position:absolute;left:50%;transform:translateX(-50%);top:40px;width:260px;height:100px;background:#a9c4d8;clip-path:polygon(30% 0,70% 0,100% 100%,0 100%);}
+.berg .below{position:absolute;left:50%;transform:translateX(-50%);top:138px;width:640px;height:270px;background:#8fb0c8;opacity:.9;clip-path:polygon(0 0,100% 0,80% 100%,20% 100%)}
+.berg .lbl{position:absolute;font-size:19px;line-height:1.4}
+
+/* metric */
+.meter{height:16px;border-radius:99px;background:var(--line);overflow:hidden;margin:10px 0 6px}
+.meter i{display:block;height:100%}
+.vs{display:grid;grid-template-columns:1fr 60px 1fr;gap:0;align-items:stretch}
+.vs .mid{display:flex;align-items:center;justify-content:center;font:800 22px 'JetBrains Mono',monospace;color:var(--mute)}
+ul{padding-left:24px} li{margin:6px 0}
+.quote{font-size:38px;font-weight:600;line-height:1.35;border-left:6px solid var(--amber);padding-left:28px}
+</style>
+</head>
+<body>
+<div id="stage">
+
+<!-- 1 -->
+<section class="slide">
+  <div class="kicker">CP3 · Pitch Problem Card #1 · Nhóm 4TrangLinhNguLam</div>
+  <h1 style="margin-top:80px;max-width:900px">Quyết định của<br><span class="hl">10 tháng trước</span></h1>
+  <p style="margin-top:28px;max-width:760px">Khách muốn đổi một logic cũ, nhưng không ai còn nhớ vì sao hồi đó lại làm vậy.</p>
+  <div class="big-q">?</div>
+  <div class="foot"><span>Khuất Duy Hiếu · 2A202603383</span><span>01</span></div>
+</section>
+
+<!-- 2 Actor -->
+<section class="slide">
+  <div class="kicker">01 · Actor</div>
+  <h2>Ai đang chịu cảnh này?</h2>
+  <div class="grid" style="grid-template-columns:1fr 1fr">
+    <div class="card actor">
+      <div class="emoji">🧭</div>
+      <h3>2 BA / PO</h3>
+      <p class="mute">Nhận yêu cầu đổi từ khách, đánh giá tác động và <b class="hl">chịu trách nhiệm cam kết</b> với khách.</p>
+      <p style="margin-top:14px">“Hồi đó mình đã hứa gì với khách nhỉ?”</p>
+    </div>
+    <div class="card actor">
+      <div class="emoji">🛠️</div>
+      <h3>3 Dev</h3>
+      <p class="mute">Đọc code, sửa logic, và <b class="red">sửa chỗ này lại làm hỏng chỗ khác</b> nếu sót ràng buộc ngầm.</p>
+      <p style="margin-top:14px">“Cái <span class="mono">if</span> này để làm gì? Xoá được không?”</p>
+    </div>
+  </div>
+  <p class="mute" style="margin-top:28px">Một team 5 người. Không ai sai, chỉ là <b style="color:var(--ink)">không ai nhớ</b>.</p>
+  <div class="foot"><span>Actor</span><span>02</span></div>
+</section>
+
+<!-- 3 Context -->
+<section class="slide">
+  <div class="kicker">02 · Bối cảnh</div>
+  <h2>Một quyết định mười tháng tuổi</h2>
+  <div class="tl">
+    <div class="axis"></div>
+    <div class="ev" style="left:0">
+      <div class="mono mute">10 tháng trước</div>
+      <div class="dot" style="background:var(--teal)"></div>
+      <p style="font-size:19px">Chốt logic sau họp + thread Slack.<br><span class="mute">Lý do chỉ có trong đầu người họp…</span></p>
+    </div>
+    <div class="ev" style="left:430px">
+      <div class="mono mute">Suốt 10 tháng đó</div>
+      <div class="dot" style="background:var(--line)"></div>
+      <p style="font-size:19px" class="mute">Ticket chỉ ghi <b>kết quả</b>.<br>Slack trôi, người quên.</p>
+    </div>
+    <div class="ev" style="left:860px">
+      <div class="mono hl">Hiện tại</div>
+      <div class="dot" style="background:var(--amber)"></div>
+      <p style="font-size:19px">Khách: <i>“Đổi logic này giúp mình nhé.”</i></p>
+    </div>
+  </div>
+  <div class="card" style="margin-top:40px;display:flex;gap:40px">
+    <div><div class="mono mute">Tần suất (ước tính)</div><div style="font-size:40px;font-weight:800" class="hl">1–2 lần/tháng</div></div>
+    <div><div class="mono mute">Độ tuổi logic</div><div style="font-size:40px;font-weight:800">3–10 tháng</div></div>
+    <div><div class="mono mute">Ghi lại “Why”?</div><div style="font-size:40px;font-weight:800" class="red">Hầu như không</div></div>
+  </div>
+  <div class="foot"><span>Bối cảnh</span><span>03</span></div>
+</section>
+
+<!-- 4 Workflow -->
+<section class="slide">
+  <div class="kicker">03 · Workflow hiện tại</div>
+  <h2>Sáu bước, nhưng bốn bước đầu chỉ để <span class="hl">đoán lại quá khứ</span></h2>
+  <div class="flow">
+    <div class="step"><div class="n">01</div><h4>Nhận yêu cầu đổi logic</h4><div class="t">5'</div></div>
+    <div class="step"><div class="n">02</div><h4>Đọc ticket / spec cũ (Jira, Notion)</h4><div class="t">10'</div></div>
+    <div class="step hot"><div class="n">03 🔥</div><h4>Lục Slack, biên bản họp, lịch sử commit</h4><div class="t">~25'</div></div>
+    <div class="step hot"><div class="n">04 🔥</div><h4>BA + Dev hỏi nhau nhớ lại ràng buộc</h4><div class="t">~15'</div></div>
+    <div class="step"><div class="n">05</div><h4>Chốt phương án & sửa code</h4><div class="t mute">—</div></div>
+    <div class="step"><div class="n">06</div><h4>Test lại xem có làm hỏng chức năng cũ không</h4><div class="t mute">—</div></div>
+  </div>
+  <div class="timebar">
+    <div style="flex:5;background:#d6d3cc">5'</div>
+    <div style="flex:10;background:#c3c0b8">10'</div>
+    <div style="flex:25;background:var(--red);color:#fff">25' lục tìm</div>
+    <div style="flex:15;background:#f08a7e">15' hỏi nhau</div>
+  </div>
+  <p class="mute" style="margin-top:14px;font-size:18px">~55' trước khi dám sửa một dòng code · trong đó <b class="red">~40' là bottleneck</b> · bước 5–6 là việc bình thường, không tính vào thời gian đau</p>
+  <div class="foot"><span>Workflow · số liệu ước tính, cần xác minh ở CP4</span><span>04</span></div>
+</section>
+
+<!-- 5 Painpoint -->
+<section class="slide">
+  <div class="kicker">04 · Painpoint nằm ở đâu</div>
+  <h2>40 phút chỉ là phần nổi của tảng băng</h2>
+  <div class="grid" style="grid-template-columns:1.3fr 1fr;align-items:center">
+    <div class="berg">
+      <div class="above"></div><div class="water"></div><div class="below"></div>
+      <div class="lbl" style="left:22px;top:30px"><b>Thấy được</b><br><span class="mute">~40' lục tìm + hỏi nhau</span></div>
+      <div class="lbl" style="left:22px;top:170px;color:#0f1115;font-weight:600;left:200px;top:200px;text-align:center;width:340px">Không tìm ra lý do gốc<br>→ đoán, hoặc hỏi lại khách</div>
+      <div class="lbl" style="color:#0f1115;font-weight:600;left:200px;top:300px;text-align:center;width:340px">Sót ràng buộc → hỏng chức năng cũ<br>→ họp lại + làm lại</div>
+    </div>
+    <div>
+      <div class="card" style="border-color:var(--red)">
+        <span class="tag red">Nhánh rủi ro 1</span>
+        <p style="margin-top:10px;font-size:19px">Bước 4 không ra lý do → <b>đoán</b> ràng buộc. <span class="mute">Bao nhiêu % số lần? Chưa có số.</span></p>
+      </div>
+      <div class="card" style="border-color:var(--red);margin-top:16px">
+        <span class="tag red">Nhánh rủi ro 2</span>
+        <p style="margin-top:10px;font-size:19px">Bước 6 phát hiện xung đột → <b>phải làm lại</b>, thậm chí mâu thuẫn với cam kết. <span class="mute">Bao nhiêu lần trong 6–12 tháng? Chưa có số.</span></p>
+      </div>
+      <p style="margin-top:18px;font-size:20px">Gốc rễ: lúc quyết định, <span class="hl">Why không được lưu lại</span>.</p>
+    </div>
+  </div>
+  <div class="foot"><span>Painpoint</span><span>05</span></div>
+</section>
+
+<!-- 6 Job story -->
+<section class="slide">
+  <div class="kicker">05 · Job Story</div>
+  <div style="margin-top:60px" class="quote">
+    <span class="mute">Khi</span> khách yêu cầu đổi một logic cũ mà không ai nhớ rõ lý do ban đầu,<br>
+    <span class="mute">tôi muốn</span> <span class="hl">biết chắc các ràng buộc ngầm</span> đứng sau quyết định đó,<br>
+    <span class="mute">để</span> không đưa ra thay đổi gây lỗi hoặc mâu thuẫn với những gì đã cam kết.
+  </div>
+  <p class="mute" style="margin-top:40px">Pain không phải là “tìm tài liệu chậm”, mà là <b style="color:var(--ink)">ra quyết định khi thiếu ngữ cảnh</b>.</p>
+  <div class="foot"><span>Job Story</span><span>06</span></div>
+</section>
+
+<!-- 7 Metric -->
+<section class="slide">
+  <div class="kicker">06 · Success metric</div>
+  <h2>Đo cái rủi ro, không chỉ đo cái chậm</h2>
+  <div class="grid" style="grid-template-columns:1.2fr 1fr">
+    <div class="card" style="border-color:var(--amber)">
+      <span class="tag hl">CHÍNH</span>
+      <h3 style="font-size:26px;margin:14px 0">Số lần sửa xong gây lỗi / phải làm lại do xung đột với logic cũ, mỗi quý</h3>
+      <div class="mono mute">baseline</div>
+      <div class="meter"><i style="width:100%;background:repeating-linear-gradient(45deg,#e3ded3 0 10px,#f1ede5 10px 20px)"></i></div>
+      <p class="mute" style="font-size:17px">? chưa có số, cần hỏi team ở CP4 (6–12 tháng qua)</p>
+      <div class="mono mute" style="margin-top:14px">target</div>
+      <div style="font-size:52px;font-weight:800" class="teal">0</div>
+    </div>
+    <div class="card">
+      <span class="tag mute">PHỤ</span>
+      <h3 style="font-size:24px;margin:14px 0">Thời gian tra cứu lý do (bước 3–4)</h3>
+      <div class="mono mute">hiện tại ~40'</div>
+      <div class="meter"><i style="width:100%;background:var(--red)"></i></div>
+      <div class="mono mute">mục tiêu &lt;10'</div>
+      <div class="meter"><i style="width:25%;background:var(--teal)"></i></div>
+    </div>
+  </div>
+  <div class="foot"><span>Metric</span><span>07</span></div>
+</section>
+
+<!-- 8 No AI vs AI -->
+<section class="slide">
+  <div class="kicker">07 · Có cần AI không?</div>
+  <h2>Thử cách không dùng AI trước</h2>
+  <div class="vs">
+    <div class="card">
+      <span class="tag teal">NO AI</span>
+      <h3 style="font-size:24px;margin:14px 0">Template ticket bắt buộc có mục “Lý do & Ràng buộc”</h3>
+      <ul class="mute" style="font-size:19px">
+        <li>Rẻ, làm được ngay</li>
+        <li class="red">Không cứu được quyết định cũ đã rải rác</li>
+        <li class="red">Dễ bị bỏ trống khi bận</li>
+      </ul>
+    </div>
+    <div class="mid">vs</div>
+    <div class="card">
+      <span class="tag" style="color:var(--blue)">GIẢ THUYẾT AI</span>
+      <h3 style="font-size:24px;margin:14px 0">Tự gom và nháp lý do từ thread Slack / biên bản họp ngay lúc chốt</h3>
+      <ul class="mute" style="font-size:19px">
+        <li>Không phụ thuộc người gõ tay</li>
+        <li>Hỗ trợ lục lại ngữ cảnh cho quyết định cũ</li>
+        <li>Con người vẫn duyệt trước khi gắn vào ticket</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top:26px">Cảm nhận nhanh: <span class="hl">No AI</span> hoặc <span class="hl">Workflow</span>, tuỳ việc team đã từng thử template chưa.</p>
+  <div class="foot"><span>Mức can thiệp</span><span>08</span></div>
+</section>
+
+<!-- 9 Question -->
+<section class="slide">
+  <div class="kicker">08 · Nhóm đang tiếp tục phản biện</div>
+  <div class="quote" style="margin-top:40px">Điểm nghẽn thật sự nằm ở bước <span class="hl">tìm lại</span> lịch sử,<br>hay ở chỗ ngay từ đầu team đã <span class="red">không ghi</span> Why?</div>
+  <div class="grid" style="grid-template-columns:repeat(3,1fr);margin-top:50px">
+    <div class="card"><div class="mono hl">?1</div><p style="font-size:18px">Trong 6–12 tháng qua, bao nhiêu lần đổi logic cũ thì gặp xung đột?</p></div>
+    <div class="card"><div class="mono hl">?2</div><p style="font-size:18px">Mỗi lần phải làm lại mất bao nhiêu giờ/ngày?</p></div>
+    <div class="card"><div class="mono hl">?3</div><p style="font-size:18px">Team đã từng thử template chưa? Vì sao bỏ?</p></div>
+  </div>
+  <div class="foot"><span>Cảm ơn · Khuất Duy Hiếu</span><span>09</span></div>
+</section>
+
+</div>
+<div id="bar"></div>
+<div id="hint">← → / click · F: toàn màn hình</div>
+<script>
+const s=[...document.querySelectorAll('.slide')],bar=document.getElementById('bar'),st=document.getElementById('stage');
+let i=0;
+function go(n){i=Math.max(0,Math.min(s.length-1,n));s.forEach((e,k)=>e.classList.toggle('on',k===i));bar.style.width=((i+1)/s.length*100)+'%';try{history.replaceState(null,'','#'+(i+1))}catch(e){}}
+function fit(){const k=Math.min(innerWidth/1280,innerHeight/720);st.style.transform=`translate(-50%,-50%) scale(${k})`}
+addEventListener('resize',fit);
+addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key))go(i+1);if(['ArrowLeft','PageUp'].includes(e.key))go(i-1);if(e.key==='f'||e.key==='F'){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()}});
+addEventListener('click',e=>go(e.clientX>innerWidth/3?i+1:i-1));
+fit();go((parseInt(location.hash.slice(1))||1)-1);
+</script>
+</body>
+</html>
