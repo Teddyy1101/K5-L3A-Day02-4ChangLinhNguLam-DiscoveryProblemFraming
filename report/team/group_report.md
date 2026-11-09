@@ -418,7 +418,17 @@ Ca thiếu/mâu thuẫn nguồn có thể đạt eval nếu được nhận di�
 
 ## 9. Hạn chế và hướng tiếp theo
 
-## 10. Tài liệu tham khảo
+Mặc dù nhóm đã hoàn thành việc phân tích problem, xây dựng quy trình trước/sau và xác định mức can thiệp phù hợp, kết quả hiện tại vẫn còn một số hạn chế:
+
+- **Thiếu dữ liệu thực tế:** CP4 chưa thực hiện phỏng vấn BA/PO và Dev, chưa thu thập được ticket, Slack, Git hoặc biên bản họp để xác minh vấn đề. Vì vậy, các nhận định về thời gian tra cứu, tần suất phát sinh và nguy cơ rework vẫn chủ yếu dựa trên ước tính ban đầu.
+
+- **Chưa có baseline đáng tin cậy:** Mốc 40 phút tìm kiếm và xác minh, 55 phút cho toàn bộ quy trình mới là số liệu ước tính. Nhóm chưa có đủ trường hợp thực tế để đánh giá chính xác mức độ ảnh hưởng của vấn đề.
+
+- **Chưa kiểm chứng giải pháp:** Decision Log và checklist mới dừng ở mức thiết kế đề xuất. Nhóm chưa thử nghiệm với người dùng thực tế nên chưa thể kết luận phương án No AI có thực sự giúp tiết kiệm thời gian và hạn chế bỏ sót ràng buộc hay không.
+
+- **Chưa đánh giá đầy đủ khả năng duy trì:** Nhóm chưa xác định được người chịu trách nhiệm cập nhật, kiểm tra và duy trì Decision Log trong thời gian dài. Ngoài ra, việc bổ sung thông tin cho các quyết định cũ có thể phát sinh thêm chi phí thời gian.
+
+- **Chưa đủ cơ sở đánh giá hiệu quả dài hạn:** Số lượng mẫu thử dự kiến còn nhỏ, chưa đủ để kết luận giải pháp có giúp giảm bug hồi quy và rework trong quá trình phát triển dự án hay không.
 
 
 -
