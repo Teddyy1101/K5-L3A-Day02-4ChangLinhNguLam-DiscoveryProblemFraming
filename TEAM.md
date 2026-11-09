@@ -6,7 +6,7 @@
 
 - Tên nhóm: 4ChangLinhNguLam
 - Candidate problem nhóm chọn (1 câu): Khi khách đổi một logic đã chốt từ 3–4 tháng trước, team BA/PO + dev không tìm lại được lý do và ràng buộc ngầm của quyết định cũ, dẫn tới mất thời gian tra cứu và rủi ro sửa sai gây hồi quy.
-- Quyết định cuối (Go / Not Yet / No-Go): 
+- Quyết định cuối (Go / Not Yet / No-Go): Not Yet
 
 ## Thành viên
 
