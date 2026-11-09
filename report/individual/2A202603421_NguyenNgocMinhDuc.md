@@ -9,8 +9,8 @@
 - Họ tên: Nguyễn Ngọc Minh Đức  
 - MSSV: 2A202603421
 - Email trường (không bắt buộc, repo có thể để public):
-- Tên nhóm: 4TrangLinhNguLam
-- Link repo nhóm: https://github.com/Teddyy1101/K5-L3A-Day02-4TrangLinhNguLam-DiscoveryProblemFraming
+- Tên nhóm: 4ChangLinhNguLam
+- Link repo nhóm: https://github.com/Teddyy1101/K5-L3A-Day02-4ChangLinhNguLam-DiscoveryProblemFraming
 
 ---
 
