@@ -47,23 +47,23 @@ AI được sử dụng để hỗ trợ mở rộng góc nhìn và đề xuất
 
 | Rank | Problem | Vì sao chọn | Điều còn chưa chắc |
 |---:|---|---|---|
-| 1 | Kiểm tra tính đầy đủ của bài lab trước khi nộp | Vấn đề cụ thể, đối tượng sử dụng rõ ràng là sinh viên. Có thể kiểm tra trực tiếp các thành phần như source code, README, báo cáo và ảnh minh chứng. Dễ xây dựng prototype và đánh giá kết quả. | Chưa xác định được sinh viên thường mất bao nhiêu thời gian để kiểm tra bài và tần suất bị thiếu file hoặc sai yêu cầu. |
-| 2 | Theo dõi thay đổi deadline từ nhiều kênh thông báo | Sinh viên thường tiếp nhận thông tin từ nhiều nguồn như LMS, email, Zalo và Messenger. Việc tổng hợp thông tin có thể giúp hạn chế bỏ lỡ deadline. | Chưa rõ tần suất thay đổi deadline thực tế và khả năng tiếp cận dữ liệu từ các nền tảng khác nhau. |
-| 3 | Theo dõi tiến độ onboarding nhân viên mới | Quy trình liên quan đến nhiều bộ phận như HR, IT và quản lý. Việc thiếu thông tin về tiến độ có thể khiến nhân viên mới phải hỏi nhiều lần và chờ đợi. | Chưa xác định được doanh nghiệp mục tiêu, quy trình onboarding phổ biến và mức độ sẵn sàng tích hợp dữ liệu giữa các bộ phận. |
+| 1 | Kiểm tra tính đầy đủ của bài lab trước khi nộp | Vấn đề cụ thể, đối tượng sử dụng rõ ràng là sinh viên Có thể kiểm tra trực tiếp các thành phần như source code, README, báo cáo và ảnh minh chứng. Dễ xây dựng prototype và đánh giá kết quả | Chưa xác định được sinh viên thường mất bao nhiêu thời gian để kiểm tra bài và tần suất bị thiếu file hoặc sai yêu cầu |
+| 2 | Theo dõi thay đổi deadline từ nhiều kênh thông báo | Sinh viên thường tiếp nhận thông tin từ nhiều nguồn như LMS, email, Zalo và Messenger. Việc tổng hợp thông tin có thể giúp hạn chế bỏ lỡ deadline | Chưa rõ tần suất thay đổi deadline thực tế và khả năng tiếp cận dữ liệu từ các nền tảng khác nhau |
+| 3 | Theo dõi tiến độ onboarding nhân viên mới | Quy trình liên quan đến nhiều bộ phận như HR, IT và quản lý. Việc thiếu thông tin về tiến độ có thể khiến nhân viên mới phải hỏi nhiều lần và chờ đợi | Chưa xác định được doanh nghiệp mục tiêu, quy trình onboarding phổ biến và mức độ sẵn sàng tích hợp dữ liệu giữa các bộ phận |
 
 ### Problem Card #1
 
 | Trường | Nội dung |
 |---|---|
-| Job Story | Khi chuẩn bị nộp bài lab hoặc bài tập lập trình, tôi muốn kiểm tra xem code, README, báo cáo và các file đính kèm đã đáp ứng đầy đủ yêu cầu của đề bài hay chưa, để tránh thiếu tài liệu hoặc mất điểm đáng tiếc. |
+| Job Story | Khi chuẩn bị nộp bài lab hoặc bài tập lập trình, tôi muốn kiểm tra xem code, README, báo cáo và các file đính kèm đã đáp ứng đầy đủ yêu cầu của đề bài hay chưa, để tránh thiếu tài liệu hoặc mất điểm đáng tiếc |
 | Actor | Sinh viên thực hiện bài lab, bài tập lớn hoặc đồ án lập trình. |
 | Thời điểm / bối cảnh | Trước thời hạn nộp bài, khi sinh viên đã hoàn thành phần lớn bài làm và cần kiểm tra lại toàn bộ sản phẩm. |
 | Quy trình hiện tại (3–7 bước) | 1. Đọc đề bài và rubric chấm điểm.<br>2. Xác định các yêu cầu cần hoàn thành.<br>3. Kiểm tra source code và cấu trúc thư mục.<br>4. Kiểm tra README, báo cáo và ảnh minh chứng.<br>5. Đối chiếu lại từng yêu cầu với sản phẩm thực tế.<br>6. Sửa các thành phần còn thiếu.<br>7. Đóng gói và nộp bài. |
 | Bottleneck (bước nào, mất bao nhiêu phút) | Bước 4 và 5: Phải kiểm tra nhiều loại file và đối chiếu thủ công với đề bài. Ước lượng ban đầu khoảng 15–30 phút/lần kiểm tra, cần phỏng vấn sinh viên để xác nhận. |
-| Impact (nếu không giải thì sao) | Có thể thiếu file, sai cấu trúc thư mục, thiếu ảnh minh chứng hoặc chưa đáp ứng một số yêu cầu trong rubric. Điều này có thể dẫn đến mất điểm hoặc phải chỉnh sửa, nộp lại bài. |
-| Success metric (baseline → target) | Thời gian kiểm tra bài: baseline cần đo → mục tiêu giảm ít nhất 50%. Tỷ lệ phát hiện các thành phần bị thiếu trước khi nộp: baseline cần đo → mục tiêu đạt ít nhất 90% trên bộ test đã chuẩn bị. |
-| Phương án không dùng AI | Xây dựng checklist cố định theo từng loại bài lab. Sinh viên tự đánh dấu các yêu cầu đã hoàn thành và sử dụng script để kiểm tra tên file, cấu trúc thư mục hoặc định dạng file. |
-| Giả thuyết về AI (nếu có) | AI có thể đọc đề bài và rubric, phân tích nội dung README, báo cáo và cấu trúc source code để đối chiếu với các yêu cầu. Sau đó tạo danh sách các mục đã đạt, còn thiếu hoặc cần kiểm tra thêm. |
+| Impact (nếu không giải thì sao) | Có thể thiếu file, sai cấu trúc thư mục, thiếu ảnh minh chứng hoặc chưa đáp ứng một số yêu cầu trong rubric. Điều này có thể dẫn đến mất điểm hoặc phải chỉnh sửa, nộp lại bài |
+| Success metric (baseline → target) | Thời gian kiểm tra bài: baseline cần đo → mục tiêu giảm ít nhất 50%. Tỷ lệ phát hiện các thành phần bị thiếu trước khi nộp: baseline cần đo → mục tiêu đạt ít nhất 90% trên bộ test đã chuẩn bị |
+| Phương án không dùng AI | Xây dựng checklist cố định theo từng loại bài lab. Sinh viên tự đánh dấu các yêu cầu đã hoàn thành và sử dụng script để kiểm tra tên file, cấu trúc thư mục hoặc định dạng file |
+| Giả thuyết về AI (nếu có) | AI có thể đọc đề bài và rubric, phân tích nội dung README, báo cáo và cấu trúc source code để đối chiếu với các yêu cầu. Sau đó tạo danh sách các mục đã đạt, còn thiếu hoặc cần kiểm tra thêm |
 | Cảm nhận nhanh | Workflow |
 
 Quy trình nháp hiện tại:
@@ -229,16 +229,16 @@ Tôi nhận thấy nhiều chức năng có thể giải quyết bằng code th�
 
 | Hoạt động | Tôi đã làm gì? | Kết quả / ảnh hưởng tới bài nhóm |
 |---|---|---|
-| Pitch Problem Card | | |
-| Phản biện bài của bạn khác | Câu hỏi tôi đã đặt: | |
-| Nhận phản biện | Câu hỏi tôi nhận được: | Tôi đã sửa gì: |
-| Gom cluster / cây OST | | |
-| Chọn candidate problem | | |
-| Kiểm chứng / research | | |
-| Quy trình nhóm | | |
-| Problem Statement | | |
-| Mức can thiệp AI | | |
-| Quyết định | | |
+| Pitch Problem Card | Tham gia trình bày và trao đổi về các Problem Card. | Giúp nhóm làm rõ các vấn đề trước khi lựa chọn. |
+| Phản biện bài của bạn khác | Đặt câu hỏi về pain point và mức độ ảnh hưởng của vấn đề. Câu hỏi tôi đã đặt: ... | Giúp tôi hiểu cách đánh giá một vấn đề cụ thể. |
+| Nhận phản biện | Câu hỏi tôi nhận được: ... | Tôi đã xem xét và điều chỉnh lại cách diễn đạt Problem Card. |
+| Gom cluster / cây OST | Tham gia phân loại và nhóm các vấn đề có điểm chung. | Giúp nhóm xác định các hướng vấn đề chính. |
+| Chọn candidate problem | Cùng nhóm so sánh và lựa chọn vấn đề phù hợp. | Chọn vấn đề tìm lại lý do và ràng buộc của logic cũ. |
+| Kiểm chứng / research | Tham gia xây dựng Assumption Map và tìm hiểu Jira, Rovo, Slack AI. | Biết thêm các công cụ có thể hỗ trợ giải quyết vấn đề. |
+| Quy trình nhóm | Phân tích các bước từ lúc nhận yêu cầu đến khi tìm hiểu và sửa logic cũ. | Xác định việc tìm kiếm thông tin là khâu tốn thời gian. |
+| Problem Statement | Tham gia làm rõ vấn đề của BA/PO và Dev khi thiếu thông tin về quyết định cũ. | Giúp nhóm tập trung đúng vào vấn đề thay vì giải pháp. |
+| Mức can thiệp AI | Tìm hiểu khả năng dùng AI để tìm kiếm và tổng hợp thông tin từ nhiều nguồn. | Nhận ra AI cần dẫn nguồn rõ ràng, không tự suy đoán. |
+| Quyết định | Tham gia đánh giá giải pháp AI và giải pháp không dùng AI. | Chưa nên xây dựng hệ thống riêng khi chưa kiểm chứng hiệu quả. |
 
 ---
 
@@ -246,35 +246,50 @@ Tôi nhận thấy nhiều chức năng có thể giải quyết bằng code th�
 
 | Checkpoint | Tôi dùng AI để làm gì? | AI hữu ích ở đâu? | AI sai hoặc hời hợt ở đâu? | Tôi sửa gì bằng nhận định của mình? |
 |---|---|---|---|---|
-| CP1 Scan | | | | |
-| CP2 Problem Card | | | | |
-| CP4 Research | | | | |
-| CP5 Quy trình | | | | |
-| CP5–6 Problem Statement | | | | |
-| CP6 Mức can thiệp / quyết định | | | | |
+| CP1 Scan | Tổng hợp và phân loại vấn đề. | Giúp tìm ra các pain point chính. | Một số ý còn chung chung. | Chọn lọc lại theo tình huống thực tế. |
+| CP2 Problem Card | Hỗ trợ viết Job Story và mô tả vấn đề. | Giúp trình bày rõ ràng hơn. | Có số liệu chưa được xác thực. | Phân biệt số liệu ước tính và số liệu thực tế. |
+| CP4 Research | Tìm hiểu công cụ và xây dựng Assumption Map. | Gợi ý được nhiều hướng nghiên cứu. | Thông tin về công cụ chưa chứng minh được tính phù hợp với nhóm. | Xem đây là giả định, cần kiểm tra thêm bằng phỏng vấn và dữ liệu thực tế. |
+| CP5 Quy trình | Chưa tham gia trực tiếp. | — | — | — |
+| CP5–6 Problem Statement | Chưa tham gia trực tiếp. | — | — | — |
+| CP6 Mức can thiệp / quyết định | Chưa tham gia trực tiếp. | — | — | — |
 
 ---
 
 ## 6. Reflection (CP7)
 
-Trả lời bằng trải nghiệm thật của bạn, tối thiểu 200 từ cho các câu 6.1–6.6 (không tính 6.7, câu này được chấm riêng ở tiêu chí C5). **Không dùng AI để viết thay.**
-
 **6.1. Tôi học được gì khi nghe top 3 problems của các bạn khác?**
 
-**6.2. Nhóm có lúc nào bị "solution-first" (nghĩ giải pháp trước khi hiểu vấn đề) không? Lúc đó nhóm nhận ra và xử lý thế nào?**
+- Không phải vấn đề nào nghe có vẻ nghiêm trọng cũng là pain point tốt.
+- Cần quan tâm đến người gặp vấn đề, tần suất và ảnh hưởng thực tế.
 
-**6.3. Tôi có đổi ý sau khi bị phản biện không? Kể một lần cụ thể.**
+**6.2. Nhóm có lúc nào bị solution-first không?**
 
-**6.4. Kết quả kiểm chứng (phỏng vấn/survey/research) có làm tôi bất ngờ không? Điều gì?**
+- Nhóm có lúc nghĩ ngay đến việc dùng AI để tìm kiếm và tổng hợp thông tin.
+- Sau đó cần quay lại phân tích quy trình hiện tại và xem vấn đề thực sự nằm ở đâu.
+- Nhóm cũng xem xét các cách làm đơn giản hơn như Decision Log.
+
+**6.3. Tôi có đổi ý sau khi bị phản biện không?**
+
+- Nêu một góp ý cụ thể bạn đã nhận được.
+- Chia sẻ suy nghĩ ban đầu và điều bạn thay đổi sau khi nghe góp ý.
+
+**6.4. Kết quả kiểm chứng có làm tôi bất ngờ không?**
+
+- CP4 chủ yếu mới dừng ở việc xây dựng giả định và research công cụ.
+- Điều đáng chú ý là một số công cụ có sẵn đã hỗ trợ được một phần vấn đề, nên không nhất thiết phải xây dựng AI mới.
 
 **6.5. Điều khó nhất khi viết Problem Statement là gì?**
 
-**6.6. Nếu làm lại, tôi sẽ đổi gì? Tôi sẽ phản biện nhóm mạnh hơn ở điểm nào?**
+- Khó nhất là mô tả đúng vấn đề mà không đưa giải pháp vào quá sớm.
+- Cần phân biệt việc thiếu thông tin về logic cũ với việc đơn thuần mất thời gian tìm kiếm tài liệu.
 
-**6.7. Hiểu bài:** giải thích bằng 5–8 câu, không nhìn tài liệu, chuỗi *problem → quy trình → metric → boundary → mức can thiệp AI → quyết định* của bài nhóm mình.
+**6.6. Nếu làm lại, tôi sẽ đổi gì?**
+
+- Tôi sẽ kiểm chứng số liệu sớm hơn thay vì chỉ dựa vào ước tính.
+- Tôi cũng sẽ đặt nhiều câu hỏi hơn về tính cần thiết của AI và khả năng tận dụng công cụ hiện có.
+
+**6.7. Hiểu bài**
+
+Vấn đề của nhóm là BA/PO và Dev khó tìm lại lý do cũng như ràng buộc của logic cũ khi khách hàng yêu cầu thay đổi. Quy trình hiện tại phải tìm kiếm thông tin từ ticket, Slack, tài liệu và Git rồi mới trao đổi để đưa ra hướng xử lý. Nhóm đặt mục tiêu giảm thời gian tìm kiếm thông tin và hạn chế lỗi do thiếu ngữ cảnh. Giải pháp cần đảm bảo người dùng có quyền truy cập dữ liệu và mọi thông tin đưa ra đều có nguồn rõ ràng. AI có thể hỗ trợ tìm kiếm và tổng hợp thông tin từ nhiều nguồn. Tuy nhiên, nhóm vẫn cần so sánh với các cách làm không dùng AI như Decision Log. Vì vậy, chưa nên quyết định xây dựng hệ thống AI riêng khi chưa có đủ bằng chứng.
 
 ---
-
-## 7. Tài liệu tham khảo
-
--
