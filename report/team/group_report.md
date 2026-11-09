@@ -163,56 +163,110 @@ Ghi chú chấm:
 
 ### 4.1. Quy trình hiện tại
 
-Sơ đồ (ASCII, Mermaid hoặc link ảnh trong `report/assets/`):
+**Phạm vi:** Khách yêu cầu đổi logic đã chốt 3–4 tháng trước; BA/PO và dev cần xác minh lý do, ràng buộc cũ trước khi sửa. 
 
 ```text
+HIỆN TẠI — ~55 phút xác minh ngữ cảnh/lần, ước tính 1–2 lần/tháng
 
+[1. BA/PO nhận yêu cầu đổi: ~5']
+  → [2. BA/PO + dev đọc ticket/spec cũ: ~10']
+  → [3. Người phụ trách lục Slack, biên bản, Git: ~25'] ← BOTTLENECK
+  → [4. BA/PO + dev đối chiếu lý do và ràng buộc: ~15'] ← BOTTLENECK
+      ├─ Đủ căn cứ → [5. BA/PO chốt phương án; dev sửa code: chưa đo]
+      │               → [6. Dev kiểm tra hồi quy; BA/PO nghiệm thu: chưa đo]
+      │                   └─ Phát hiện xung đột → quay lại bước 4–5
+      └─ Thiếu/mâu thuẫn → hỏi người quyết định cũ hoặc khách
+                          → quay lại bước 4; thời gian chờ chưa đo
 ```
 
-| Bước | Actor | Input | Output | Thời gian / tần suất | Ghi chú |
-|---:|---|---|---|---|---|
-| 1 | | | | | |
-| 2 | | | | | |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
+| Bước | Actor                               | Input                                                                  | Output                                                                                                          | Thời gian / tần suất                                         | Ghi chú                                                                                                                                                       |
+| -----: | ----------------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      1 | BA/PO phụ trách                   | Yêu cầu của khách                                                  | Phạm vi logic cần đổi và ticket liên quan → dev phụ trách                                              | ~5 phút/lần; ước tính 1–2 lần/tháng                     | Làm rõ điểm khác với yêu cầu đã chốt.                                                                                                               |
+|      2 | BA/PO và dev                       | Yêu cầu đổi, ticket/spec trên Jira/Notion                         | Logic hiện hành và các câu hỏi về lý do/ràng buộc → người tra cứu                                 | ~10 phút/lần                                                  | Ticket có thể ghi “làm gì” nhưng thiếu “vì sao”.                                                                                                    |
+|      3 | BA/PO hoặc dev được phân công | Ticket ID, từ khóa, thời điểm chốt                               | Thread Slack, biên bản, tài liệu, commit liên quan → BA/PO + dev                                          | ~25 phút/lần                                                  | **Bottleneck:** nguồn phân tán, chưa rõ bản nào còn hiệu lực. Commit chứng minh thay đổi code, chưa chắc giải thích lý do nghiệp vụ. |
+|      4 | Một BA/PO và một dev             | Nguồn tìm được, thông tin từ người tham gia quyết định cũ | Lý do/ràng buộc đã xác nhận hoặc danh sách điểm chưa rõ → BA/PO quyết định có cho sửa không | ~15 phút trao đổi/lần; chưa đo thời gian chờ hỏi thêm | **Bottleneck:** phải khôi phục ngữ cảnh; thiếu nguồn có thể dẫn đến đoán sai.                                                              |
+|      5 | BA/PO chốt, dev thực hiện        | Yêu cầu đổi và ràng buộc đã xác nhận                        | Phương án được duyệt, code thay đổi → bước 6                                                        | Chưa đo; tùy phạm vi sửa                                   | Ngoài tổng ~55 phút xác minh. Chưa đủ căn cứ thì giữ yêu cầu ở trạng thái chờ.                                                                |
+|      6 | Dev kiểm tra, BA/PO nghiệm thu    | Code, yêu cầu mới, ràng buộc cũ                                  | Kết quả hồi quy/nghiệm thu hoặc yêu cầu quay lại bước 4–5                                            | Chưa đo; mỗi thay đổi                                      | Ghi riêng bug/rework do bỏ sót ràng buộc cũ.                                                                                                             |
 
-**Bottleneck chính:**
+**Bottleneck chính:** Bước 3 và 4 chiếm khoảng **40/55 phút** xác minh ngữ cảnh. Cần phân biệt *lý do đã được ghi nhưng khó tìm* với *lý do chưa từng được ghi*. Trường hợp thứ hai phải hỏi người có thẩm quyền; tìm kiếm hoặc AI không thể thay thế bằng chứng còn thiếu.
 
 ### 4.2. Quy trình tương lai
 
-Ghi rõ bước nào **Rule**, bước nào **AI**, bước nào **con người**, **boundary** ở đâu, **phương án quay về** khi AI sai.
+**Hướng thử nghiệm từ CP4:** Ưu tiên chuẩn hóa mục “Lý do & Ràng buộc” trong ticket/Decision Log và thử công cụ tra cứu hiện có. Chỉ thử AI tổng hợp khi nguồn cũ vẫn phân tán, cách đơn giản chưa đủ và công ty cho phép xử lý dữ liệu. Đây là phương án để so sánh ở CP6, chưa phải quyết định chọn AI.
+
+Nhánh có AI dưới đây đặt **mục tiêu 30 phút xác minh/lần**: giữ nguyên 15 phút tiếp nhận/đọc ticket; dành 15 phút cho tìm nguồn, tổng hợp và kiểm tra. Thời gian từng bước là ngân sách thử nghiệm, chưa đo thực tế.
 
 ```text
+TƯƠNG LAI — mục tiêu ~30 phút xác minh ngữ cảnh/lần khi đủ nguồn
 
+[1. CON NGƯỜI — BA/PO nhận yêu cầu đổi: ~5']
+  → [2. CON NGƯỜI — BA/PO + dev đọc ticket, xác định câu hỏi: ~10']
+  → [3. RULE — lọc theo ticket ID/thời gian, bỏ trùng nguồn: ~2']
+  → [4. AI — nháp lý do/ràng buộc, dẫn nguồn, nêu điểm chưa rõ: ~3']
+  → [5. CON NGƯỜI — BA/PO + dev kiểm nguồn, ghi kết quả xác minh: ~10']
+      ├─ Đủ căn cứ → [6. CON NGƯỜI — BA/PO duyệt; dev sửa code: chưa đo]
+      │               → [7. CON NGƯỜI — kiểm tra hồi quy/nghiệm thu: chưa đo]
+      │                   └─ Có xung đột → quay lại bước 5–6
+      └─ Thiếu nguồn/AI sai → tra thủ công + hỏi người quyết định cũ/khách
+                             → quay lại bước 5; chưa được chốt thay đổi
 ```
+
+| Bước | Loại / actor                                           | Input → Output / handoff                                                                                                              | Thời gian mục tiêu | Kiểm soát                                                                                                                                                                                               |
+| -----: | ------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|      1 | **Con người:** BA/PO                            | Yêu cầu của khách → phạm vi thay đổi, ticket liên quan → dev                                                                 | ~5 phút/lần         | BA/PO làm rõ yêu cầu trước khi tra cứu.                                                                                                                                                            |
+|      2 | **Con người:** BA/PO + dev                      | Ticket/spec → câu hỏi cần xác minh, nguồn được phép dùng → bước 3                                                        | ~10 phút/lần        | Kiểm tra Decision Log trước; nếu đã đủ căn cứ thì chuyển thẳng bước 5, bỏ qua AI.                                                                                                         |
+|      3 | **Rule/script:** truy vấn, bộ lọc cố định   | Ticket ID, khoảng thời gian, tập nguồn được phép → link/đoạn trích, loại trùng → bước 4                               | ~2 phút/lần         | Không suy luận lý do. Chưa giả định có connector; mọi thời gian chọn/gom nguồn thủ công phải tính vào bước này.                                                                       |
+|      4 | **AI hỗ trợ**                                   | Câu hỏi + nguồn đã chọn → nháp lý do, ràng buộc, link/trích đoạn, thời điểm và điểm thiếu/mâu thuẫn → bước 5 | ~3 phút/lần         | Chỉ dùng nguồn được phép; mỗi kết luận gắn nguồn. Thiếu bằng chứng ghi “chưa xác định”.                                                                                              |
+|      5 | **Con người — HITL:** BA/PO + dev              | Bản nháp và nguồn gốc → kết quả xác minh, điểm chưa rõ, điều kiện biên → BA/PO chốt                                 | ~10 phút/lần        | BA/PO kiểm nghiệp vụ/cam kết; dev kiểm ảnh hưởng kỹ thuật. Mở nguồn đối chiếu, kiểm ngày và quyết định thay thế; ghi người xác nhận, nguồn và ngày vào ticket/Decision Log. |
+|      6 | **Con người:** BA/PO duyệt, dev sửa           | Quyết định đã xác nhận → code và trường hợp kiểm thử → bước 7                                                         | Chưa đo             | Chỉ sửa sau khi được duyệt; ngoài mục tiêu ~30 phút.                                                                                                                                            |
+|      7 | **Con người:** dev kiểm tra, BA/PO nghiệm thu | Code + yêu cầu mới + ràng buộc cũ → kết quả nghiệm thu hoặc yêu cầu sửa lại                                             | Chưa đo             | Kiểm hồi quy và ghi nguyên nhân nếu rework.                                                                                                                                                         |
+
+**Boundary:** AI chỉ tạo bản nháp để người phụ trách kiểm tra; không tự duyệt phương án, sửa ticket/code, gửi thông tin cho khách hay truy cập ngoài phạm vi cho phép. Không tìm thấy ràng buộc không có nghĩa là không có ràng buộc. Chưa có quyền sử dụng dữ liệu thì không chạy bước AI.
+
+**Phương án quay về:** Rule/AI lỗi, dẫn nguồn sai hoặc bản nháp không dùng được → bỏ bản nháp, quay về bước 3–4 của quy trình hiện tại. Nguồn thiếu/mâu thuẫn → BA/PO hỏi người quyết định cũ hoặc khách và ghi lại xác nhận; chưa có căn cứ thì giữ trạng thái chờ. Ghi cả thời gian thử thất bại, tra cứu lại và chờ phản hồi; các ca này có thể vượt mục tiêu 30 phút.
+
+**Cách so sánh:** Thử template/Decision Log và tìm kiếm hiện có trước. Nếu cần thử AI, so sánh trên tình huống tương đương, tính cả công sức gom nguồn và sửa bản nháp. Không kết luận cần AI chỉ vì có thể đưa AI vào quy trình.
 
 ### 4.3. Before / after
 
-| Chỉ số | Trước | Sau (kỳ vọng) | Ghi chú |
-|---|---:|---:|---|
-| Số bước | | | |
-| Tổng thời gian | | | |
-| Số bước thủ công | | | |
-| Bottleneck chính | | | |
-| Rủi ro mới phát sinh | | | |
+| Chỉ số                                          |                                 Trước |                                                                Sau (kỳ vọng) | Ghi chú                                                                                                                  |
+| ------------------------------------------------- | --------------------------------------: | -----------------------------------------------------------------------------: | ------------------------------------------------------------------------------------------------------------------------- |
+| Số bước chính                                 |              6; gồm 4 bước xác minh |                                                     7; gồm 5 bước xác minh | Đếm nhánh chính có AI, chưa tính vòng lặp; số bước tăng vì tách rõ tìm nguồn, tổng hợp và kiểm tra. |
+| Thời gian xác minh ngữ cảnh                   |             ~55 phút/lần, ước tính |                                                    ≤30 phút/lần, mục tiêu | Cùng phạm vi: nhận yêu cầu → xác nhận đủ ngữ cảnh; không gồm sửa code/hồi quy.                            |
+| Số bước thủ công                             |              6; gồm 4 bước xác minh |                                           5; gồm 3 bước xác minh (1, 2, 5) | Khi Rule/AI chạy được; chọn nguồn và xử lý lỗi vẫn có thể cần thao tác thủ công.                         |
+| Bottleneck tìm và xác nhận lý do/ràng buộc |        ~40 phút (25 + 15), ước tính |                                            ≤15 phút (2 + 3 + 10), mục tiêu | Tính cả tìm/gom nguồn, đọc, sửa nháp và hỏi lại; không chỉ đo thời gian AI trả lời.                      |
+| Bug/rework do sót ràng buộc cũ                |                      Chưa có baseline |                               Mục tiêu không phát sinh ca mới trong pilot | Theo dõi đến hết sprint kế tiếp; mẫu ít chưa chứng minh đã loại bỏ hồi quy.                                |
+| Rủi ro mới phát sinh                           | Tìm thiếu nguồn, dựa vào trí nhớ | AI suy diễn, nguồn cũ/sai, bỏ sót ràng buộc, dùng dữ liệu sai quyền | Người kiểm nguồn bắt buộc; nguồn thiếu/mâu thuẫn thì hỏi lại và quay về thủ công.                        |
+
+**Cách đo và xác lập baseline:** Ghi cho mỗi yêu cầu: mã ticket ẩn danh, tuổi quyết định, nguồn sử dụng, phút thao tác từng bước, phút chờ, số người tham gia, lỗi bản nháp, nhánh quay về và bug/rework được BA/PO + dev xác nhận nguyên nhân. Mốc 55 phút là thời gian quy trình ước tính, không phải tổng người-phút; ghi thêm công sức từng người khi làm đồng thời.
+
+Thu tối thiểu **3 ca thực tế làm baseline**, sau đó tối thiểu **3 ca cải tiến tương đương**; so sánh trung vị thời gian thao tác. Báo cáo riêng tổng thời gian trôi qua từ tiếp nhận đến xác nhận, ca chưa xác minh được và tỷ lệ quay về thủ công; không bỏ ca thất bại khỏi báo cáo. Với tần suất ước tính 1–2 lần/tháng, thu mẫu có thể kéo dài nhiều tháng. Có thể diễn tập trên ticket cũ để kiểm tra sớm nhưng phải ghi là diễn tập và tách khỏi số liệu vận hành.
 
 ---
 
 ## 5. Problem Statement v0 (CP5)
 
-| Trường | Nội dung |
-|---|---|
-| **Actor** | |
-| **Quy trình** | |
-| **Bottleneck** | |
-| **Impact** | |
-| **Success Metric** (baseline → target, cách đo) | |
-| **Boundary** (AI không được làm gì; khi nào cần con người kiểm tra — HITL) | |
+**Bản nháp để nhóm rà soát và tự chốt:** CP4 chưa có kết quả kiểm chứng, vì vậy nội dung và target dưới đây còn là giả thuyết. Chưa kết luận rằng AI là giải pháp cần thiết.
 
-Phản biện nhận được (từ AI hoặc nhóm khác) và nhóm có đồng ý không:
+| Trường                                                                                     | Nội dung                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Actor**                                                                              | Team dự án gồm 2 BA/PO và 3 dev; mỗi yêu cầu đổi logic có BA/PO phụ trách nghiệp vụ và dev phụ trách phần code bị ảnh hưởng.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| **Quy trình**                                                                         | Khi khách yêu cầu đổi logic đã chốt 3–4 tháng trước, team tiếp nhận yêu cầu, đọc ticket/spec, tìm và xác nhận lý do/ràng buộc cũ trước khi chốt phương án, sửa code và kiểm tra hồi quy. Tần suất ước tính 1–2 lần/tháng, chưa kiểm chứng.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| **Bottleneck**                                                                         | Tra cứu nguồn phân tán (~25 phút) và BA/PO + dev khôi phục, đối chiếu ngữ cảnh (~15 phút) chiếm ~40 phút trong ~55 phút xác minh ban đầu. Chưa rõ bao nhiêu ca khó tìm nguồn, bao nhiêu ca lý do chưa từng được ghi.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| **Impact**                                                                             | Chậm chốt phương án và mất công tra cứu/hỏi lại. Nếu đoán sai hoặc bỏ sót ràng buộc thì có nguy cơ bug hồi quy, mâu thuẫn cam kết và rework. CP4 chưa ghi nhận ca cụ thể hoặc baseline thiệt hại, nên chưa lượng hóa tác động này.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| **Success Metric** (baseline → target, cách đo)                                     | **Baseline tạm:** ~40 phút tìm/xác nhận, ~55 phút xác minh toàn bộ; phải đo lại trên ít nhất 3 ca thật. **Target đề xuất:** trung vị tìm/xác nhận ≤15 phút và xác minh toàn bộ ≤30 phút thao tác/lần trên ít nhất 3 ca cải tiến tương đương. **Cách đo:** nhật ký từng bước theo mục 4.3, gồm xử lý lỗi và tra cứu lại; báo cáo riêng thời gian chờ, ca chưa giải quyết và công sức từng người. **Điều kiện chất lượng:** các lý do/ràng buộc dùng để duyệt thay đổi phải được BA/PO + dev xác nhận bằng nguồn hoặc xác nhận có thẩm quyền được ghi lại; mục tiêu không phát sinh bug/rework do sót ràng buộc trong pilot và đến hết sprint kế tiếp. Baseline bug/rework chưa có. |
+| **Boundary** (AI không được làm gì; khi nào cần con người kiểm tra — HITL) | Nếu thử AI, chỉ được tạo nháp trên dữ liệu được phép, phải dẫn nguồn và nêu phần chưa xác định. Không tự suy diễn lý do thành sự thật, duyệt thay đổi, sửa ticket/code, gửi thông tin cho khách hoặc vượt quyền truy cập. BA/PO kiểm nghiệp vụ/cam kết, dev kiểm ảnh hưởng kỹ thuật trước khi sửa. Thiếu hoặc mâu thuẫn bằng chứng thì tra thủ công/hỏi người quyết định cũ hoặc khách; chưa xác minh thì chưa chốt thay đổi.                                                                                                                                                                                                                                                                                                                    |
 
--
+**Phản biện từ AI — nhóm chưa xác nhận đồng ý/bác bỏ:**
+
+| Phản biện / lỗ hổng                                                                                 | Nội dung nhóm cần xem xét                                                                                                                                                      |
+| ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CP3 yêu cầu có ít nhất một ca rework thật để giữ candidate #1; CP4 hiện chưa có kết quả. | Hoàn tất phỏng vấn và kiểm tra ticket trước khi coi problem là đã xác nhận; áp dụng điều kiện chuyển về candidate B nếu kiểm chứng không đạt.            |
+| ~40 phút là thời gian thao tác, chờ hay tổng công sức nhiều người?                           | Đo tách ba loại thời gian; cập nhật baseline và target nếu ước tính ban đầu sai.                                                                                      |
+| Vì sao target ≤15 phút thay vì dưới 10 phút như card cá nhân?                                 | Đây là mốc đề xuất dành 10 phút kiểm nguồn và 5 phút tìm/tổng hợp. Nhóm cần tự chốt sau khi đo, bảo đảm không cắt bước kiểm tra để đạt tốc độ. |
+| Nếu lý do chưa từng được ghi, AI lấy bằng chứng ở đâu?                                     | Phân loại ca thiếu nguồn; hỏi người có thẩm quyền và ghi nhận quyết định, không yêu cầu AI tạo lý do thay cho bằng chứng.                                    |
+| Decision Log và tìm kiếm hiện có đã đủ chưa?                                                  | Thử cách đơn giản trước; chỉ xem xét AI ở CP6 nếu kết quả cho thấy còn khoảng trống và đủ quyền sử dụng dữ liệu.                                          |
+| Pilot ít ca có đủ chứng minh giảm hồi quy không?                                                | Ghi rõ mẫu và thời gian theo dõi; xem “không có bug mới” là điều kiện chất lượng ban đầu, chưa phải kết luận đã giảm rework.                             |
 
 ---
 ---
