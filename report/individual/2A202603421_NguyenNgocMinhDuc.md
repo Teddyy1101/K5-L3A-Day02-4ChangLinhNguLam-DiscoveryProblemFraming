@@ -149,9 +149,3 @@ Nhóm chọn vấn đề BA/PO và dev khó tìm lại lý do cùng ràng buộc
 ## 7. Tài liệu tham khảo
 
 -
-
----
-
-## 7. Tài liệu tham khảo
-
--
