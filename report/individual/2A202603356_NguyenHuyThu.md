@@ -20,11 +20,11 @@ Lăng kính: **Lặp lại · Tốn thời gian · Tổng hợp nhiều thông t
 
 | # | Lăng kính | Job Story: Khi… tôi muốn… để… | Ai chịu ảnh hưởng? | Dấu hiệu thật / Cần kiểm chứng |
 |---:|---|---|---|---|
-| 1 | Lặp lại; Tốn thời gian; Pain từ người khác | Khi nhân viên mới bắt đầu làm việc, tôi muốn biết thủ tục nào đã hoàn thành, còn thiếu và đang chờ bộ phận nào, để bắt đầu công việc đúng hạn. | Nhân viên mới, HR, IT, quản lý. | Onboarding liên quan nhiều bộ phận. Cần phỏng vấn để xác định số lần hỏi lại và thời gian hoàn tất thủ tục. |
-| 2 | Tốn thời gian; Tổng hợp nhiều thông tin; Pain từ người khác | Khi chuẩn bị nộp bài lab hoặc bài tập lập trình, tôi muốn kiểm tra code, README, báo cáo và file đính kèm đã đủ yêu cầu chưa, để tránh thiếu tài liệu và mất điểm. | Sinh viên | Bài tập có nhiều thành phần cần kiểm tra. Cần hỏi sinh viên về lỗi thiếu file, số lần sửa hoặc nộp lại. |
-| 3 | Lặp lại; Tốn thời gian; Tổng hợp nhiều thông tin | Khi đơn hàng gặp sự cố, tôi muốn tổng hợp thông tin đơn hàng, vận chuyển và trao đổi với khách tại một nơi, để xử lý nhanh và không bỏ sót thông tin. | Chủ shop, nhân viên bán hàng, CSKH, khách hàng. | Thông tin nằm trên nhiều nền tảng. Cần phỏng vấn shop về số đơn lỗi và thời gian xử lý. |
-| 4 | Lặp lại; Tổng hợp nhiều thông tin; Pain từ người khác | Khi deadline hoặc lịch học thay đổi qua nhiều kênh, tôi muốn tổng hợp và phát hiện thay đổi, để cập nhật lịch kịp thời và không bỏ lỡ công việc. | Sinh viên, lớp trưởng, giảng viên. | Thông báo nằm trên LMS, email, Zalo, Messenger. Cần khảo sát số kênh sử dụng và số lần bỏ lỡ deadline. |
-| 5 | Tốn thời gian; Tổng hợp nhiều thông tin; Pain từ người khác | Khi muốn khiếu nại đơn hàng, tôi muốn tập hợp hóa đơn, ảnh và lịch sử trao đổi thành bộ bằng chứng, để gửi khiếu nại rõ ràng và dễ theo dõi. | Người mua online, CSKH, bộ phận xử lý khiếu nại. | Bằng chứng nằm rải rác ở nhiều nơi. Cần khảo sát thời gian chuẩn bị và khó khăn khi khiếu nại. Báo cáo Ủy ban Cạnh tranh Quốc gia ghi nhận 144 phản ánh, khiếu nại về TMĐT trong 9 tháng đầu năm 2025. |
+| 1 | Lặp lại | Khi nhân viên mới bắt đầu làm việc, tôi muốn biết thủ tục nào đã hoàn thành, còn thiếu và đang chờ bộ phận nào, để bắt đầu công việc đúng hạn. | Nhân viên mới, HR, IT, quản lý. | Onboarding liên quan nhiều bộ phận. Cần phỏng vấn để xác định số lần hỏi lại và thời gian hoàn tất thủ tục. |
+| 2 | Tốn thời gian| Khi chuẩn bị nộp bài lab hoặc bài tập lập trình, tôi muốn kiểm tra code, README, báo cáo và file đính kèm đã đủ yêu cầu chưa, để tránh thiếu tài liệu và mất điểm. | Sinh viên | Bài tập có nhiều thành phần cần kiểm tra. Cần hỏi sinh viên về lỗi thiếu file, số lần sửa hoặc nộp lại. |
+| 3 | Lặp lại | Khi đơn hàng gặp sự cố, tôi muốn tổng hợp thông tin đơn hàng, vận chuyển và trao đổi với khách tại một nơi, để xử lý nhanh và không bỏ sót thông tin. | Chủ shop, nhân viên bán hàng, CSKH, khách hàng. | Thông tin nằm trên nhiều nền tảng. Cần phỏng vấn shop về số đơn lỗi và thời gian xử lý. |
+| 4 | Tổng hợp nhiều thông tin; Pain từ người khác | Khi deadline hoặc lịch học thay đổi qua nhiều kênh, tôi muốn tổng hợp và phát hiện thay đổi, để cập nhật lịch kịp thời và không bỏ lỡ công việc. | Sinh viên, lớp trưởng, giảng viên. | Thông báo nằm trên LMS, email, Zalo, Messenger. Cần khảo sát số kênh sử dụng và số lần bỏ lỡ deadline. |
+| 5 | Tốn thời gian | Khi muốn khiếu nại đơn hàng, tôi muốn tập hợp hóa đơn, ảnh và lịch sử trao đổi thành bộ bằng chứng, để gửi khiếu nại rõ ràng và dễ theo dõi. | Người mua online, CSKH, bộ phận xử lý khiếu nại. | Bằng chứng nằm rải rác ở nhiều nơi. Cần khảo sát thời gian chuẩn bị và khó khăn khi khiếu nại. Báo cáo Ủy ban Cạnh tranh Quốc gia ghi nhận 144 phản ánh, khiếu nại về TMĐT trong 9 tháng đầu năm 2025. |
 
 **Nếu có dùng AI để gợi ý thêm:** 
 
@@ -87,7 +87,7 @@ Kiểm tra source code, README và báo cáo
 Có thành phần bị thiếu?
    |                  |
   Có                 Không
-   |                  |
+   |                  | 
    v                  v
 Bổ sung / sửa       Nộp bài
    |                  
