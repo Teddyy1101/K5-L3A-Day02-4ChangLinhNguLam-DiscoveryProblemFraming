@@ -93,16 +93,10 @@ Card #2 và #3 (tóm tắt):
 
 | Hoạt động | Tôi đã làm gì? | Kết quả / ảnh hưởng tới bài nhóm |
 |---|---|---|
-| Pitch Problem Card | | |
-| Phản biện bài của bạn khác | Câu hỏi tôi đã đặt: | |
-| Nhận phản biện | Câu hỏi tôi nhận được: | Tôi đã sửa gì: |
-| Gom cluster / cây OST | | |
-| Chọn candidate problem | | |
-| Kiểm chứng / research | | |
-| Quy trình nhóm | | |
-| Problem Statement | | |
-| Mức can thiệp AI | | |
-| Quyết định | | |
+| Pitch Problem Card | Trình bày 3 problem: bỏ sót yêu cầu trước khi nộp, tìm đúng tài liệu mới nhất và theo dõi tiến độ thành viên. Tôi ưu tiên problem kiểm tra bài trước khi nộp vì gần với trải nghiệm của mình và có quy trình rõ. | Đưa thêm các vấn đề từ việc học và phối hợp nhóm vào danh sách candidate; problem kiểm tra bài được gom cùng đề xuất tương tự của Thứ.|
+| Phản biện bài của bạn khác | Câu hỏi tôi đã đặt: |Với problem của Hiếu, tôi hỏi: “Nếu chỉ thêm mục Lý do vào template ticket thì giải được bao nhiêu phần?”. Tôi cũng hỏi việc lệch yêu cầu xuất phát từ tóm tắt thiếu hay từ cuộc họp chưa làm rõ trường hợp biên.|
+| Nhận phản biện | Câu hỏi tôi nhận được:“Khó ở chỗ hiểu đề hay ở chỗ đối chiếu? Checklist và kiểm tra chéo có đủ không?”. Tôi cũng nhận phản biện rằng baseline thời gian kiểm bài chưa được đo thực tế. | Tôi đã sửa gì:Làm rõ cần xác định đúng bước gây lỗi, bổ sung yêu cầu đo thời gian và trách nhiệm của người nộp. AI chỉ gợi ý; người nộp vẫn đối chiếu đề và xác nhận. |
+| Chọn candidate problem |Ban đầu tôi nghiêng về problem kiểm tra bài vì quen thuộc và dễ thử. Sau khi so sánh, tôi thống nhất chọn vấn đề mất lý do và ràng buộc khi đổi logic cũ của Hiếu. |Nhóm chọn candidate theo hậu quả và khả năng kiểm chứng, đồng thời giữ problem kiểm tra bài làm phương án dự phòng nếu kiểm chứng không ủng hộ candidate đã chọn. |
 
 ---
 
@@ -110,12 +104,9 @@ Card #2 và #3 (tóm tắt):
 
 | Checkpoint | Tôi dùng AI để làm gì? | AI hữu ích ở đâu? | AI sai hoặc hời hợt ở đâu? | Tôi sửa gì bằng nhận định của mình? |
 |---|---|---|---|---|
-| CP1 Scan | | | | |
-| CP2 Problem Card | | | | |
-| CP4 Research | | | | |
-| CP5 Quy trình | | | | |
-| CP5–6 Problem Statement | | | | |
-| CP6 Mức can thiệp / quyết định | | | | |
+| CP2 Problem Card |Nhờ AI phản biện Card #1. |	Chỉ ra baseline chưa đo và trách nhiệm khi AI kiểm tra sai. |Chưa có dữ liệu thực tế để xác nhận hiệu quả. |Bổ sung yêu cầu đo thời gian; người nộp vẫn kiểm tra và chịu trách nhiệm. |
+| CP4 Research | Nhờ AI rà soát giải pháp có sẵn. |Đối chiếu tài liệu về Decision Log, Rovo và Slack AI. |Chưa thử công cụ với dữ liệu của team. |Cần tự kiểm tra mức phù hợp; phân biệt research với kiểm chứng người dùng. |
+| CP5–6 Problem Statement |Nhờ AI soạn bản nháp v1. |Làm rõ metric, boundary và người kiểm tra. |Chưa có v0 và baseline thực đo. | |
 
 ---
 
@@ -123,19 +114,41 @@ Card #2 và #3 (tóm tắt):
 
 Trả lời bằng trải nghiệm thật của bạn, tối thiểu 200 từ cho các câu 6.1–6.6 (không tính 6.7, câu này được chấm riêng ở tiêu chí C5). **Không dùng AI để viết thay.**
 
+> Bản nháp có AI hỗ trợ, dựa trên báo cáo cá nhân và báo cáo nhóm hiện có. Tác giả cần tự rà soát, viết lại các nhận xét cá nhân theo trải nghiệm thật trước khi nộp; bản nháp không bổ sung kết quả phỏng vấn hoặc số liệu thực đo chưa có.
+
 **6.1. Tôi học được gì khi nghe top 3 problems của các bạn khác?**
+
+Tôi học được rằng chọn vấn đề không chỉ dựa vào việc dễ làm. Ví dụ, vấn đề của Hiếu không chỉ gây mất thời gian tìm thông tin mà còn có thể khiến team sửa sai logic. Vì vậy, cần xem cả hậu quả và bằng chứng thực tế.
 
 **6.2. Nhóm có lúc nào bị "solution-first" (nghĩ giải pháp trước khi hiểu vấn đề) không? Lúc đó nhóm nhận ra và xử lý thế nào?**
 
+Có lúc nhóm nghĩ ngay đến chatbot hoặc script. Sau đó, nhóm quay lại hỏi người dùng đang khó ở bước nào và vì sao. Đến CP6, nhóm đề xuất thử ghi lại quyết định và lý do bằng Decision Log trước khi cân nhắc AI.
+
 **6.3. Tôi có đổi ý sau khi bị phản biện không? Kể một lần cụ thể.**
+
+Có. Tôi đặt mục tiêu giảm thời gian kiểm bài từ 10 xuống 5 phút dù chưa đo thực tế. Sau phản biện, tôi thấy cần bấm giờ và xác định khó khăn nằm ở hiểu đề hay đối chiếu bài. Tôi cũng bổ sung rằng người nộp phải kiểm tra lại gợi ý của AI.
 
 **6.4. Kết quả kiểm chứng (phỏng vấn/survey/research) có làm tôi bất ngờ không? Điều gì?**
 
+Nhóm chưa phỏng vấn hay khảo sát nên tôi chưa có kết quả để nhận xét. Phần research cho thấy đã có công cụ hỗ trợ bài toán tương tự. Tuy nhiên, nhóm vẫn cần thử để biết chúng có phù hợp với cách làm và dữ liệu của team không.
+
 **6.5. Điều khó nhất khi viết Problem Statement là gì?**
+
+Khó nhất là đặt mục tiêu rõ mà không tự điền số liệu. Khoảng 40 phút hiện chỉ là ước tính. Nhóm cũng cần nói rõ ai kiểm tra thông tin và xử lý thế nào khi thiếu nguồn, thay vì chỉ đặt mục tiêu làm nhanh hơn.
 
 **6.6. Nếu làm lại, tôi sẽ đổi gì? Tôi sẽ phản biện nhóm mạnh hơn ở điểm nào?**
 
+Tôi sẽ cùng nhóm phỏng vấn và đo thời gian sớm hơn. Tôi muốn hỏi kỹ hơn: team đã từng sửa sai vì thiếu ngữ cảnh chưa, đã thử template chưa và vì sao cách đó chưa đủ? Có câu trả lời rồi mới quyết định có cần AI hay không.
+
 **6.7. Hiểu bài:** giải thích bằng 5–8 câu, không nhìn tài liệu, chuỗi *problem → quy trình → metric → boundary → mức can thiệp AI → quyết định* của bài nhóm mình.
+
+Nhóm chọn vấn đề BA/PO và dev khó tìm lại lý do cùng ràng buộc khi cần sửa logic cũ. Hiện team phải đọc ticket, tìm lịch sử trao đổi và hỏi lại người liên quan trước khi sửa. Bước tìm và xác minh được ước tính mất khoảng 40 phút, chưa có số đo thực tế. Mục tiêu là giảm lỗi phải làm lại và xác minh đúng ít nhất 8/10 trường hợp đủ nguồn trong dưới 10 phút mỗi trường hợp. Chỉ được dùng nguồn được phép; nếu thiếu hoặc mâu thuẫn thông tin thì phải hỏi BA/PO và dev, không tự đoán. Mức đề xuất hiện tại là No AI, dùng Decision Log và kiểm tra chéo trước. Kết luận là Not Yet vì chưa có phỏng vấn và dữ liệu kiểm chứng, đồng thời CP5 vẫn cần hoàn thiện.
+
+---
+
+## 7. Tài liệu tham khảo
+
+-
 
 ---
 
