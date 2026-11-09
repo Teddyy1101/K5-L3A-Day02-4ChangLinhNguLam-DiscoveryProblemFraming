@@ -10,7 +10,7 @@
 - MSSV:2A202603429
 - Email trường (không bắt buộc, repo có thể để public):
 - Tên nhóm: 4TrangLinhNguLam
-- Link repo nhóm:[github.com/Teddyy1101/K5-L3A-Day02-4TrangLinhNguLam-DiscoveryProblemFraming](https://github.com/Teddyy1101/K5-L3A-Day02-4TrangLinhNguLam-DiscoveryProblemFraming)
+- Link repo nhóm:[github.com/Teddyy1101/K5-L3A-Day02-4ChangLinhNguLam-DiscoveryProblemFraming](https://github.com/Teddyy1101/K5-L3A-Day02-4TrangLinhNguLam-DiscoveryProblemFraming)
 
 ---
 
@@ -27,7 +27,7 @@ Lăng kính: **Lặp lại** · **Tốn thời gian** · **Cần đọc, tổng 
 | 5 | Cần đọc, tổng hợp nhiều thông tin | Khi chuẩn bị báo cáo tuần từ đầu việc, thay đổi mã nguồn và trao đổi trong nhóm, tôi muốn xác định đúng phần đã hoàn thành, còn dang dở và đang bị chặn, để báo cáo phản ánh đúng thực tế. | Developer              | Cần 60 phút tổng hợp                                                              |
 | 6 | Cần đọc, tổng hợp nhiều thông tin | Khi đánh giá khả năng hoàn thành mục tiêu tuần, tôi muốn hiểu các phụ thuộc và rủi ro từ tiến độ của từng thành viên, để đưa ra cam kết phù hợp với năng lực thực tế của nhóm.                  | Tech lead              | Cần 2 tiếng tổng hợp tình hình                                                   |
 | 7 | Pain từ người khác                   | Khi nhận tính năng để kiểm thử, tôi muốn biết phạm vi thay đổi, điều kiện kiểm thử và các giới hạn đã biết, để tránh mất thời gian xác minh lại với developer.                                         | Tester                 | 5 lượt hỏi lại bổ sung/ tính năng                                              |
-| 8 | Pain từ người khác                   | Khi đọc báo cáo tiến độ của developer, tôi muốn phân biệt rõ phần đã hoàn thành với phần chỉ mới bắt đầu hoặc đang chờ, để đánh giá đúng khả năng bàn giao.                                       | PM                     | Mất 4 làn hỏi lại sau báo cáo                                                    |
+| 8 | Pain từ người khác                   | Khi đọc báo cáo tiến độ của developer, tôi muốn phân biệt rõ phần đã hoàn thành với phần chỉ mới bắt đầu hoặc đang chờ, để đánh giá đúng khả năng bàn giao.                                       | PM                     | Mất 4 lần hỏi lại sau báo cáo                                                    |
 
 **Nếu có dùng AI để gợi ý thêm:** ý nào AI gợi ý mà bạn giữ lại, ý nào bỏ và vì sao.
 
@@ -120,15 +120,17 @@ HIỆN TẠI — 40 phút thao tác + 8 giờ làm việc chờ/đầu việc
 
 ### Card muốn pitch nhất
 
-- Card số:
-- Vì sao:
-- Câu hỏi muốn nhóm phản biện:
+- Card số: #1
+- Vì sao: Công việc lặp lại mỗi tuần, đang mất khoảng 60 phút/developer và có phạm vi rõ. Dễ thử nghiệm, đo thời gian tiết kiệm và kiểm tra chất lượng báo cáo.
+- Câu hỏi muốn nhóm phản biện: Liệu mẫu báo cáo cố định và Jira đã đủ giải quyết vấn đề chưa? Nếu dùng AI, thời gian kiểm tra và sửa bản nháp có khiến tổng thời gian không giảm đáng kể không?
 
 ### AI đã phản biện card thế nào
 
-| Điểm yếu AI chỉ ra | Đồng ý? | Đã sửa gì |
-| ---------------------- | ---------- | ------------- |
-|                        |            |               |
+| Điểm yếu AI chỉ ra                                                                  | Đồng ý? | Đã sửa gì                                                                                           |
+| --------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------- |
+| Chưa chứng minh mẫu báo cáo cố định và Jira chưa đủ giải quyết vấn đề. | Đồng ý  | Bổ sung thử nghiệm với mẫu cố định và Jira để làm mốc so sánh trước khi đánh giá AI. |
+| Thời gian kiểm tra, sửa bản nháp có thể làm giảm lợi ích tiết kiệm.        | Đồng ý  | Đo tổng thời gian chuẩn bị dữ liệu, tạo nháp, kiểm tra và sửa đến khi sẵn sàng gửi.    |
+| Tiết kiệm thời gian chưa đủ chứng minh báo cáo có chất lượng.              | Đồng ý  | Bổ sung tiêu chí: thông tin sai hoặc thiếu và số câu hỏi làm rõ từ quản lý không tăng. |
 
 ---
 
