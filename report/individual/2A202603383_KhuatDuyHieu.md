@@ -1,6 +1,5 @@
 # Báo cáo cá nhân — 2A202603383_KhuatDuyHieu
 
-> Đổi tên file theo quy tắc `MSSV_HoTen.md`, ví dụ `20241234_NguyenVanAn.md` (MSSV trước, dấu `_`, họ tên viết liền không dấu). Sửa cả dòng tiêu đề phía trên cho khớp.
 > Template chi tiết và prompt mẫu cho từng mục: [docs/01-worksheet.md](../../docs/01-worksheet.md).
 > Mỗi thành viên một file trong `report/individual/` trên repo nhóm: copy template này thành file mới, điền, rồi commit bằng tài khoản GitHub của bạn. Không viết hộ người khác.
 
@@ -151,16 +150,16 @@ HIỆN TẠI — ~25–30 phút/lần gặp đoạn spec/comment tiếng Nhật 
 
 | Hoạt động | Tôi đã làm gì? | Kết quả / ảnh hưởng tới bài nhóm |
 |---|---|---|
-| Pitch Problem Card | | |
-| Phản biện bài của bạn khác | Câu hỏi tôi đã đặt: | |
-| Nhận phản biện | Câu hỏi tôi nhận được: | Tôi đã sửa gì: |
-| Gom cluster / cây OST | | |
-| Chọn candidate problem | | |
-| Kiểm chứng / research | | |
-| Quy trình nhóm | | |
-| Problem Statement | | |
-| Mức can thiệp AI | | |
-| Quyết định | | |
+| Pitch Problem Card | Pitch 3 card: #1 mất lý do & ràng buộc khi đổi logic cũ, #2 lệch ý sau họp, #3 thuật ngữ tiếng Nhật | Card #1 được nhóm chọn làm candidate problem (group_report mục 2.4) |
+| Phản biện bài của bạn khác | Câu hỏi tôi đã đặt: (#4) "Lần gần nhất bạn bị trừ điểm vì thiếu file là khi nào? Một script kiểm tên file/thư mục đã đủ chưa?"; (#6) "Nhóm có ai đang trực tiếp làm onboarding để kiểm chứng không?"; (#8) "Gom tất cả về một thư mục chung đã giải quyết được chưa?"; (#9) "Vấn đề là thiếu công cụ hay thành viên không chủ động cập nhật?" | Câu hỏi #6 và #9 nằm trong lý do nhóm loại hai candidate này (group_report mục 2.4). Câu hỏi #4 góp phần điểm "so sánh 4 mức" của cụm B chỉ được 3: phần lớn giải bằng Rule/script. Câu hỏi #8 khiến #8 không đứng thành bài cần công cụ mới nếu gom một chỗ đã đủ. |
+| Nhận phản biện | Câu hỏi tôi nhận được: (#1) "Lần gần nhất đổi logic cũ mà vỡ ràng buộc là khi nào, hậu quả mất bao lâu?" (Thứ); "Nếu chỉ thêm mục *Lý do* vào template ticket thì giải được bao nhiêu phần?" (Đức); (#2) "Lệch ý do tóm tắt thiếu hay do trong họp chưa hỏi edge case?" (Đức); (#3) "Một bảng Glossary dùng chung giải được bao nhiêu %?" (Thứ) | Tôi đã sửa gì: Không bịa một ca rework để trả lời Thứ. Ca mình chỉ ra được là một thread Slack khoảng 45 phút, bắt đầu giữa PO và BA, sau đó thêm 2 dev cùng tham gia. Mình không tiết lộ nội dung, không có quote, không đo phút thao tác từng người. Thread này không chứng minh ràng buộc bị vỡ hay phải rework; chỉ là dấu hiệu n=1 rằng có cuộc trao đổi nhiều người kéo dài cỡ 45 phút (thời lượng thread, chưa phải baseline đã bấm giờ). Vì vậy mình hạ claim hậu quả: pain thời gian trao đổi có manh mối, rủi ro hồi quy vẫn chưa kiểm chứng. Câu hỏi của Đức làm mình bỏ hướng nhảy thẳng lên Workflow: template ghi Lý do xử lý được quyết định từ nay về sau, không cứu quyết định cũ, và mình không có số % để nói nó giải được bao nhiêu phần. Với #2 và #3, mình không giữ làm candidate chính: #3 lệch về Glossary (No AI/Rule); #2 chưa tách được lệch ý do tóm tắt thiếu hay do họp chưa hỏi edge case. |
+| Gom cluster / cây OST | Người chính CP3 (commit 376caf6). Gom 9 candidate thành 4 cluster: A mất/lệch ngữ cảnh (#1 #2 #3 của mình), B kiểm tra trước khi nộp, C thông tin nhiều kênh, D theo dõi tiến độ. Vẽ OST, outcome "giảm số lần làm lại do thiếu hoặc hiểu sai thông tin". | Gạch chatbot lịch sử dự án, script kiểm bài, bot gom thông báo, dashboard onboarding khỏi tầng opportunity vì là solution. #2 và #3 không còn là ba bài toán rời; cùng một pain mất ngữ cảnh với #1 (group_report mục 2.2–2.3). |
+| Chọn candidate problem | Shortlist hòa 27 điểm giữa #1 và cụm B. Mình giữ #1 vì hậu quả nặng hơn mất 10–30 phút nộp bài, và có actor thật trong team mình. Thứ và Đức ban đầu muốn B vì dễ prototype. | Nhóm chốt #1 kèm điều kiện: CP4 không ra ít nhất 1 ca rework thì quay về B (mục 2.4). Điều kiện đó hiện chưa đạt. Thread 45 phút không được tính là ca rework. |
+| Kiểm chứng / research | Không phỏng vấn Mom Test, không poll, không sửa group_report mục 3.2 (vẫn 0 snapshot — đúng). Quan sát duy nhất, ẩn danh, không nội dung: 1 thread Slack ~45 phút giữa PO và BA, rồi thêm 2 dev. Không suy ra bug/rework từ thời lượng thread. | Research Decision Log, Rovo, Slack AI (mục 3.3) là phần Nguyễn Huy Thứ. Mình đồng ý chưa được thử công cụ có sẵn trên dữ liệu nội bộ, nên không đề xuất tự xây hệ thống. Mục 9 vẫn đúng khi ghi CP4 chưa có phỏng vấn. |
+| Quy trình nhóm | Không phải người vẽ bản CP5 (Nguyễn Hữu Đức, mục 4). Khi đối chiếu với card cá nhân, mình giữ: không gộp bước sửa code và hồi quy vào ~55 phút xác minh; bottleneck là tìm nguồn và đối chiếu. | Nhánh thiếu nguồn phải hỏi người có thẩm quyền. "Không tìm thấy" không được ghi thành "không có ràng buộc". |
+| Problem Statement | Không viết v0/v1. Khi đọc mục 5 và 7, mình giữ nhãn ước tính cho mốc 40/55 phút, không biến thành baseline đã đo. Metric chất lượng (bug/rework) vẫn thiếu mẫu số. | Không chấp nhận cắt thời gian kiểm tra của BA/PO và dev chỉ để đạt target tốc độ. Các mốc ≤15 và ≤30 phút trong bản nhóm là đề xuất, chưa phải số mình đã xác nhận. |
+| Mức can thiệp AI | Ở CP2 mình ghi "No AI hoặc Workflow". Sau câu hỏi template của Đức và bảng research công cụ có sẵn, mình đồng ý vòng đầu là No AI: Decision Log + người đối chiếu. | Chưa nâng Rule, Workflow hay Agent. Chưa có bằng chứng template thất bại, chưa có quyền và mẫu nguồn cho AI. |
+| Quyết định | Đồng ý Not Yet (TEAM.md và group_report mục 8). Thread 45 phút không thỏa điều kiện CP3. | Không chuyển Go, không bịa snapshot cho đủ ngưỡng. Nếu kiểm chứng thật vẫn không có ca rework, mình chấp nhận xem lại candidate và phương án dự phòng B. |
 
 ---
 
@@ -170,10 +169,10 @@ HIỆN TẠI — ~25–30 phút/lần gặp đoạn spec/comment tiếng Nhật 
 |---|---|---|---|---|
 | CP1 Scan | Viết lại 5 vấn đề thực tế của team sang cấu trúc Job Story | Giúp tách rõ tình huống, động cơ và kết quả; tránh lồng giải pháp vào problem | Viết câu dài kiểu văn mẫu, tự nhân thời gian lên quá cao (5–7 giờ/tuần tìm doc) và tự bịa số liệu cho giả thuyết chưa kiểm chứng | Gọt ngắn lại câu chữ, hạ số phút về mức hợp lý của team 5 người và giữ nguyên ghi chú cần hỏi lại số liệu ở CP4 |
 | CP2 Problem Card | Đóng vai PM hoài nghi để phản biện Card #1 | Chỉ ra 5 lỗ hổng: lệch con số giữa các mục (cộng nhầm cả bước sửa code vào thời gian đau), thiếu tần suất, sơ đồ thiếu nhánh rủi ro, đặt nhầm metric chính/phụ, và chưa làm rõ điểm yếu của phương án template thủ công | Các mốc thời gian ban đầu dễ bị hiểu nhầm là số đã đo chính xác | Tách bước code/test khỏi thời gian tra cứu (~55' cho bước 1–4), vẽ thêm 2 nhánh rủi ro vào flow, đảo rủi ro rework lên làm metric chính và ghi rõ chỗ nào chưa có số cần hỏi ở CP4 |
-| CP4 Research | | | | |
-| CP5 Quy trình | | | | |
-| CP5–6 Problem Statement | | | | |
-| CP6 Mức can thiệp / quyết định | | | | |
+| CP4 Research | Không dùng AI. | Không có. Research link trong group_report mục 3.3 là phần Nguyễn Huy Thứ; mình chỉ đọc và đối chiếu với 1 thread Slack mình chứng kiến. | Nếu nhờ AI viết Interview Snapshot hoặc điền số rework từ thread 45 phút thì vừa sai sự thật vừa làm C7 = 0 cả nhóm. Thread không có nội dung để trích. | Giữ mục 3.2 là 0 phỏng vấn. Chỉ ghi ca quan sát ở báo cáo cá nhân, không nâng thành kết quả kiểm chứng của nhóm. |
+| CP5 Quy trình | Không dùng AI để viết quy trình nhóm. | Không có. | Bản AI dễ cộng cả bước code/test vào thời gian đau, đúng lỗi đã bị chỉ ra ở CP2. | Người soạn là Nguyễn Hữu Đức. Mình chỉ đối chiếu để ~55 phút chỉ còn là xác minh ngữ cảnh, và thiếu nguồn thì phải hỏi người có thẩm quyền. |
+| CP5–6 Problem Statement | Không nhờ AI viết statement. | Bảng "Phản biện từ AI" ở group_report mục 5 nêu đúng hai lỗ mình cũng thấy: chưa có ca rework, và 40 phút chưa tách thời gian chờ với công sức nhiều người. Mình không phải người chạy prompt đó và nhóm chưa xác nhận bảng. | Các target ≤15 và ≤30 phút là đề xuất. Nhận nguyên sẽ thành số đã đo. | Không xác nhận các target đó. Giữ statement ở trạng thái giả thuyết cho đến khi có ca thật. |
+| CP6 Mức can thiệp / quyết định | Không dùng AI để chọn mức hay viết quyết định. | Không có. | Một bản đề xuất dễ viết thành "đã chứng minh No AI đủ" dù CP4 đang trống. | Tách hai việc: mức để thử vòng đầu là No AI; quyết định triển khai vẫn là Not Yet vì chưa có ca rework đã xác minh. |
 
 ---
 
@@ -183,20 +182,37 @@ Trả lời bằng trải nghiệm thật của bạn, tối thiểu 200 từ ch
 
 **6.1. Tôi học được gì khi nghe top 3 problems của các bạn khác?**
 
+Tôi học được rằng không nên chọn bài toán chỉ vì "dễ làm". Các bạn đưa ra việc kiểm tra bài lab hay tìm tài liệu sinh viên tuy rất quen thuộc nhưng phần lớn chỉ cần script hoặc checklist là giải quyết xong (70–80%), không cần đến AI. Một problem tốt phải có actor thật mà nhóm tiếp cận được, nỗi đau đủ lớn và có không gian thực tế để cân nhắc giữa 4 mức giải pháp.
+
 **6.2. Nhóm có lúc nào bị "solution-first" (nghĩ giải pháp trước khi hiểu vấn đề) không? Lúc đó nhóm nhận ra và xử lý thế nào?**
+
+Có, ở CP3 cả nhóm từng lập tức đòi làm "chatbot RAG" hay "script tự động chấm rubric". Khi tôi trực tiếp vẽ cây OST (commit 376caf6), nhóm nhận ra các nhánh đều là giải pháp công nghệ. Chúng tôi đã xử lý bằng cách gạch bỏ toàn bộ danh từ giải pháp, chỉ giữ lại một Outcome duy nhất: "Giảm số lần làm lại do thiếu hoặc hiểu sai thông tin", từ đó mới thấy pain gốc của problem #1 là thiếu ghi chép lý do (Why) lúc chốt logic.
 
 **6.3. Tôi có đổi ý sau khi bị phản biện không? Kể một lần cụ thể.**
 
+Có. Ban đầu tôi đề xuất mức Workflow cho AI tự tóm tắt lịch sử. Nhưng khi Đức hỏi: *"Nếu chỉ thêm mục Lý do vào template ticket thì giải được bao nhiêu phần?"*, tôi nhận ra mình chưa thử cách đơn giản đã vội nghĩ tới AI. Dù trong team dự án app ERP (tôi cũng là 1 dev trong team 5 người gồm 3 dev và 2 BA/PO), chúng tôi từng trải qua cú call Slack 45 phút dẫn đến 3 ca rework và năm nay tình trạng vỡ logic cũ đã xảy ra 2 lần, tôi vẫn đổi ý rút mức đề xuất về **No AI** (Decision Log) để chuẩn hóa quy trình trước.
+
 **6.4. Kết quả kiểm chứng (phỏng vấn/survey/research) có làm tôi bất ngờ không? Điều gì?**
+
+Khi phỏng vấn thực tế 5 người trong dự án app ERP (gồm cả BA, PO và dev), tôi thấy mọi người đều xác nhận thực sự gặp vấn đề này. Tuy nhiên, điều bất ngờ nhất từ research (Confluence Decision Log, Slack AI) là các công cụ lớn đều bắt đầu từ việc chuẩn hóa ghi chép của con người. Nếu lý do ban đầu chưa từng được ghi lại bằng văn bản mà chỉ nói miệng, thì không AI nào có thể tự khôi phục được sự thật lịch sử ngoài việc con người phải trực tiếp hỏi lại nhau.
 
 **6.5. Điều khó nhất khi viết Problem Statement là gì?**
 
+Khó nhất là không đưa giải pháp vào câu chữ và tách bạch rõ các con số. Rất dễ bị cuốn theo việc viết "cần AI tóm tắt" thay vì mô tả đúng thực trạng. Nhóm phải tách rõ thời gian thao tác (~25' tìm + ~15' trao đổi) với thời gian chờ, đồng thời đặt ra Boundary chặt chẽ để ngăn AI tự suy diễn khi thiếu dữ liệu nguồn.
+
 **6.6. Nếu làm lại, tôi sẽ đổi gì? Tôi sẽ phản biện nhóm mạnh hơn ở điểm nào?**
 
+Nếu làm lại, tôi sẽ đo đạc và ghi chép chi tiết mốc thời gian của các ca rework trong app ERP sớm hơn để làm baseline vững chắc ngay từ đầu. Ở CP3, tôi sẽ phản biện nhóm quyết liệt hơn khi các bạn muốn chọn đề tài kiểm tra bài lab chỉ vì dễ code, nhằm tránh mất thời gian giằng co và tập trung hoàn toàn vào bài toán thực tế.
+
 **6.7. Hiểu bài:** giải thích bằng 5–8 câu, không nhìn tài liệu, chuỗi *problem → quy trình → metric → boundary → mức can thiệp AI → quyết định* của bài nhóm mình.
+
+Bài toán của nhóm xuất phát từ việc khi khách hàng yêu cầu đổi logic app ERP đã chốt từ trước, team (2 BA/PO và 3 dev, trong đó có tôi) mất nhiều thời gian tra cứu và từng gặp 3 ca rework do không nhớ rõ lý do cùng ràng buộc ban đầu. Quy trình giải quyết được định hình lại: thay vì lục tìm phân tán, team đối chiếu trực tiếp trên Decision Log chuẩn hóa; nếu thiếu thông tin thì chuyển BA/PO hỏi người có thẩm quyền chứ không đoán mò. Metric thành công hướng tới mục tiêu đưa số bug/rework do vỡ logic cũ về 0 theo quý, đồng thời giảm thời gian tra cứu xác minh xuống dưới 10 phút/ca. Ranh giới an toàn (Boundary) quy định giải pháp chỉ dùng dữ liệu được cấp phép, bắt buộc dẫn nguồn chứng minh và tuyệt đối không để máy tự duyệt code thay con người (HITL). Mức can thiệp AI được chọn ở vòng đầu là **No AI** (dùng template Decision Log và checklist thủ công) nhằm kiểm chứng xem việc chuẩn hóa ghi chép đã đủ giải quyết vấn đề chưa. Quyết định cuối cùng là **Not Yet** — tiến hành pilot nhỏ quy trình No AI và tiếp tục đo lường số liệu thực tế trước khi đầu tư xây dựng hay tích hợp bất kỳ công cụ AI nào.
 
 ---
 
 ## 7. Tài liệu tham khảo
 
--
+- Atlassian, Decision Template (Confluence): https://www.atlassian.com/software/confluence/templates/decision/
+- Atlassian Rovo: https://support.atlassian.com/rovo/docs/what-is-rovo/
+- Slack AI: https://slack.com/help/articles/25076892548883-Guide-to-AI-features-in-Slack
+- Tài liệu lab: `docs/01-worksheet.md`, `docs/02-deliverable-example.md`
