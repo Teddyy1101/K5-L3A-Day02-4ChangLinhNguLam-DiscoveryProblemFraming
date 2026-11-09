@@ -104,49 +104,58 @@ Ghi chú chấm:
 
 ### 3.1. Assumption Map
 
-| # | Giả định | Loại (Value / Usability / Feasibility / Viability) | Quan trọng (1–5) | Đã có bằng chứng (1–5) | Kiểm chứng trước? |
+| # | Giả định | Loại | Quan trọng (1–5) | Đã có bằng chứng (1–5) | Kiểm chứng trước? |
 |---:|---|---|---:|---:|---|
-| 1 | | | | | |
-| 2 | | | | | |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
-| 6 | | | | | |
+| 1 | BA/PO và Dev thường mất nhiều thời gian tìm lại lý do của logic cũ. | Value | 5 | 1 | Có |
+| 2 | Lý do và ràng buộc cũ thường nằm rải rác trong Slack, Jira, Notion và Git. | Value | 5 | 1 | Có |
+| 3 | Thiếu ngữ cảnh từng khiến team phải đoán, sửa lại hoặc phát sinh bug. | Value | 5 | 1 | Có |
+| 4 | Có thể truy cập và kết nối dữ liệu từ các công cụ đang sử dụng. | Feasibility | 4 | 1 | Có |
+| 5 | AI có thể tổng hợp đúng lý do quyết định và dẫn nguồn gốc để kiểm chứng. | Feasibility | 5 | 1 | Có |
+| 6 | Công ty cho phép sử dụng AI với dữ liệu nội bộ của dự án. | Viability | 5 | 1 | Có |
 
-*Điền 4–6 giả định; xóa dòng thừa.*
+**Giả định nhóm kiểm chứng trong buổi này:**
 
-Giả định nhóm kiểm chứng trong buổi này:
+- Thời gian thực tế để tìm lại quyết định cũ có gần 40 phút không?
+- Thiếu ngữ cảnh có thực sự gây bug hoặc rework không?
+- Các công cụ hiện tại có đủ khả năng tìm lại thông tin không?
+- AI có thể tổng hợp chính xác và trích dẫn nguồn không?
 
 ### 3.2. Kiểm chứng
 
-Cách đã dùng: Phỏng vấn / Survey / Log, ticket, review
+**Cách đã dùng:** Chưa có kết quả phỏng vấn thực tế. Dự kiến phỏng vấn 2 BA/PO và 3 Dev không thuộc nhóm thực hiện bài tập; kết hợp kiểm tra ticket, Slack, tài liệu và lịch sử Git nếu được phép.
 
-Interview snapshot (mỗi buổi phỏng vấn một bảng, hoặc đặt file trong `report/assets/cp4-interview-snapshot-N.md`):
+**Interview snapshot:**
 
 | Trường | Nội dung |
 |---|---|
-| Người được hỏi (vai trò, không ghi tên thật) | |
-| Câu nói đáng nhớ nhất (nguyên văn) | |
-| Lần gần nhất gặp vấn đề này: chuyện gì đã xảy ra? | |
-| Hiện đang xử lý bằng cách nào (workaround)? | |
-| Mất bao lâu, bao lần? | |
-| Insight / opportunity rút ra | |
+| Người được hỏi (vai trò, không ghi tên thật) | BA/PO hoặc Dev – chờ phỏng vấn |
+| Câu nói đáng nhớ nhất (nguyên văn) | Chưa có dữ liệu |
+| Lần gần nhất gặp vấn đề này: chuyện gì đã xảy ra? | Chờ người được hỏi mô tả tình huống thực tế |
+| Hiện đang xử lý bằng cách nào (workaround)? | Dự kiến kiểm tra Slack, Jira, Notion, Git và hỏi đồng nghiệp |
+| Mất bao lâu, bao lần? | Chưa đo; cần ghi nhận thời gian và tần suất thực tế |
+| Insight / opportunity rút ra | Chưa kết luận trước khi có phỏng vấn |
 
-Tổng hợp:
+**Tổng hợp:**
 
 | Nguồn | Số người / số mẫu | Tín hiệu xác nhận | Tín hiệu phản bác |
 |---|---:|---|---|
-| | | | |
-
-**Nhóm đã sửa problem thế nào sau kiểm chứng:**
+| Phỏng vấn BA/PO | 0/2 | Chưa có | Chưa có |
+| Phỏng vấn Dev | 0/3 | Chưa có | Chưa có |
+| Ticket, Slack, Git, biên bản họp | 0 mẫu | Chưa kiểm tra | Chưa kiểm tra |
 
 ### 3.3. Research giải pháp đã có
 
 | Công cụ / case / pattern | Link | Giải bước nào trong quy trình? | Điểm mạnh | Khoảng trống / rủi ro | Bài học cho nhóm |
 |---|---|---|---|---|---|
-| | | | | | |
-| | | | | | |
-| | | | | | |
+| Jira + Confluence Decision Log | [Atlassian Decision Template](https://www.atlassian.com/software/confluence/templates/decision/) | Lưu lý do, người quyết định, phương án và kết quả tại thời điểm chốt. | Có cấu trúc lưu trữ quyết định, dễ tra cứu lại. | Phụ thuộc vào việc BA/PO hoặc Dev chủ động ghi chép đầy đủ. | Ưu tiên chuẩn hóa cách ghi nhận quyết định trước. |
+| Atlassian Rovo | [Rovo Documentation](https://support.atlassian.com/rovo/docs/what-is-rovo/) | Tìm kiếm thông tin trên Jira, Confluence và các nguồn đã kết nối như Slack. | Tìm kiếm ngữ nghĩa trên nhiều nguồn, có thể trả lời dựa trên dữ liệu nội bộ theo quyền truy cập. | Phụ thuộc kết nối, quyền truy cập và chất lượng dữ liệu; câu trả lời AI vẫn cần kiểm chứng. | Cần thử công cụ có sẵn trước khi tự xây hệ thống tìm kiếm. |
+| Slack AI | [Slack AI Features](https://slack.com/help/articles/25076892548883-Guide-to-AI-features-in-Slack) | Tìm kiếm, tóm tắt thread và hội thoại cũ trong Slack. | Giúp nhanh chóng nắm lại nội dung trao đổi và ngữ cảnh hội thoại. | Chủ yếu hỗ trợ dữ liệu Slack; không tự giải quyết việc tìm quyết định trên Jira hoặc Git. Tính năng tùy gói dịch vụ. | Có thể tận dụng để tìm lại trao đổi nhưng vẫn cần đối chiếu nguồn khác. |
+
+**Kết luận Research:**
+
+- Không nên xây hệ thống mới ngay khi chưa thử công cụ hiện có.
+- Ưu tiên kiểm tra Jira/Confluence Decision Log và khả năng tìm kiếm bằng Rovo hoặc Slack AI.
+- Nếu vẫn thiếu khả năng tổng hợp lý do từ nhiều nguồn, nhóm mới thử nghiệm AI hỗ trợ, bắt buộc dẫn nguồn để BA/PO xác nhận.
 
 ---
 
