@@ -26,12 +26,12 @@ Mở [02-deliverable-example.md](02-deliverable-example.md). Khi đọc, chú ý
 
 ### 4 lăng kính
 
-| Lăng kính | Câu hỏi gợi mở | Ví dụ |
-|---|---|---|
-| **Lặp lại** | Việc gì xuất hiện đều mỗi ngày/tuần/tháng? Người mới vào có phải hỏi lại cùng một quy trình không? | Báo cáo tuần, nhập liệu, trả lời câu hỏi lặp lại |
-| **Tốn thời gian** | Việc gì mỗi lần làm đều nặng? Thời gian mất ở đâu: tìm thông tin, đọc, tổng hợp, chờ người khác, format, sửa lại? | Đọc tài liệu dài, tìm quyết định cũ, review văn bản |
-| **Cần đọc, tổng hợp nhiều thông tin** | Việc gì cần hiểu ngữ cảnh, đọc/viết nhiều văn bản, phân loại, so sánh, tổng hợp từ nhiều nguồn? Mô tả cái khó, chưa nói cách giải (không viết "cần AI…") | Tìm tài liệu, tóm tắt nhiều nguồn, phân loại ticket |
-| **Pain từ người khác** | Ai ngoài bạn đang kẹt hoặc than phiền lặp lại? Có dấu hiệu thật không: ticket, tin nhắn, comment, survey? | Hỏi lại deadline, không hiểu task, ticket lặp lại |
+| Lăng kính                                        | Câu hỏi gợi mở                                                                                                                                                                       | Ví dụ                                                         |
+| -------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| **Lặp lại**                                | Việc gì xuất hiện đều mỗi ngày/tuần/tháng? Người mới vào có phải hỏi lại cùng một quy trình không?                                                                 | Báo cáo tuần, nhập liệu, trả lời câu hỏi lặp lại     |
+| **Tốn thời gian**                          | Việc gì mỗi lần làm đều nặng? Thời gian mất ở đâu: tìm thông tin, đọc, tổng hợp, chờ người khác, format, sửa lại?                                               | Đọc tài liệu dài, tìm quyết định cũ, review văn bản |
+| **Cần đọc, tổng hợp nhiều thông tin** | Việc gì cần hiểu ngữ cảnh, đọc/viết nhiều văn bản, phân loại, so sánh, tổng hợp từ nhiều nguồn? Mô tả cái khó, chưa nói cách giải (không viết "cần AI…") | Tìm tài liệu, tóm tắt nhiều nguồn, phân loại ticket    |
+| **Pain từ người khác**                   | Ai ngoài bạn đang kẹt hoặc than phiền lặp lại? Có dấu hiệu thật không: ticket, tin nhắn, comment, survey?                                                                  | Hỏi lại deadline, không hiểu task, ticket lặp lại         |
 
 Nếu bí, tự hỏi:
 
@@ -46,10 +46,10 @@ Nếu bí, tự hỏi:
 Khi [tình huống cụ thể], tôi muốn [động cơ], để [kết quả mong muốn].
 ```
 
-| ❌ Chưa tốt | ✅ Tốt hơn |
-|---|---|
-| Cần chatbot hỏi đáp tài liệu môn học | Khi chuẩn bị nộp bài lab lúc 22h, tôi muốn biết bài mình còn thiếu mục nào, để không bị trừ điểm vì sai cấu trúc |
-| Báo cáo tuần mất thời gian | Khi tới sáng thứ Hai, tôi muốn có số liệu sprint và tình hình team trong một chỗ, để viết báo cáo tuần cho CEO trước 10h |
+| ❌ Chưa tốt                                | ✅ Tốt hơn                                                                                                                                  |
+| -------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cần chatbot hỏi đáp tài liệu môn học | Khi chuẩn bị nộp bài lab lúc 22h, tôi muốn biết bài mình còn thiếu mục nào, để không bị trừ điểm vì sai cấu trúc      |
+| Báo cáo tuần mất thời gian              | Khi tới sáng thứ Hai, tôi muốn có số liệu sprint và tình hình team trong một chỗ, để viết báo cáo tuần cho CEO trước 10h |
 
 Job Story ép bạn ghi **tình huống** (khi nào xảy ra) và **kết quả** (vì sao quan trọng). Nó cũng ngăn bạn viết giải pháp vào phần problem.
 
@@ -59,13 +59,13 @@ Mỗi dòng cần ít nhất một con số: mất bao lâu, mấy lần/tuần,
 
 ### Ngân hàng gợi ý (chỉ đọc khi bí, viết lại theo trải nghiệm của bạn)
 
-| Bối cảnh | Gợi ý |
-|---|---|
-| Học tập | Tìm lại câu trả lời cũ trong Discord; đọc tài liệu dài trước deadline; không biết bài nộp thiếu mục nào; ôn tập từ nhiều nguồn rời rạc |
-| Đời sống | Theo dõi chi tiêu ở nhiều app; lên kế hoạch đi lại cho nhóm; nhắc việc định kỳ mà hay quên ngữ cảnh |
-| Thực tập / việc mới | Hỏi lại quy trình onboarding; tìm đúng người phụ trách; viết update hằng tuần; hiểu task từ nhiều thread |
-| Người đi làm | Tổng hợp báo cáo tuần; recap cuộc họp; review tài liệu dài; phân loại ticket; tìm quyết định cũ |
-| Sản phẩm đang dùng | Tìm kiếm kém; onboarding khó hiểu; thông báo sai lúc; form dài dễ nhập sai |
+| Bối cảnh              | Gợi ý                                                                                                                                                           |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Học tập               | Tìm lại câu trả lời cũ trong Discord; đọc tài liệu dài trước deadline; không biết bài nộp thiếu mục nào; ôn tập từ nhiều nguồn rời rạc |
+| Đời sống             | Theo dõi chi tiêu ở nhiều app; lên kế hoạch đi lại cho nhóm; nhắc việc định kỳ mà hay quên ngữ cảnh                                            |
+| Thực tập / việc mới | Hỏi lại quy trình onboarding; tìm đúng người phụ trách; viết update hằng tuần; hiểu task từ nhiều thread                                          |
+| Người đi làm        | Tổng hợp báo cáo tuần; recap cuộc họp; review tài liệu dài; phân loại ticket; tìm quyết định cũ                                                  |
+| Sản phẩm đang dùng  | Tìm kiếm kém; onboarding khó hiểu; thông báo sai lúc; form dài dễ nhập sai                                                                             |
 
 ### Prompt (chỉ dùng sau khi đã tự scan)
 
@@ -199,12 +199,12 @@ Chấm mỗi giả định theo 2 trục: **quan trọng** (1–5) và **đã c�
 2. Hỏi về **chuyện cụ thể đã xảy ra**, không hỏi chung chung hay giả định về tương lai.
 3. **Nói ít, nghe nhiều.**
 
-| ❌ Đừng hỏi | ✅ Hỏi thế này |
-|---|---|
+| ❌ Đừng hỏi                                           | ✅ Hỏi thế này                                                                              |
+| -------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
 | Bạn có muốn một công cụ AI viết báo cáo không? | Lần gần nhất bạn viết báo cáo tuần là khi nào? Kể lại từng bước bạn đã làm. |
-| Bạn sẽ dùng nó chứ? | Hiện bạn đang xử lý bằng cách nào? Đã thử công cụ gì chưa? |
-| Ý tưởng này hay không? | Bước nào mất nhiều thời gian nhất? Mất khoảng bao lâu? |
-| Bạn có sẵn sàng trả tiền không? | Bạn đã từng bỏ tiền hoặc thời gian để giải quyết chuyện này chưa? |
+| Bạn sẽ dùng nó chứ?                                 | Hiện bạn đang xử lý bằng cách nào? Đã thử công cụ gì chưa?                      |
+| Ý tưởng này hay không?                              | Bước nào mất nhiều thời gian nhất? Mất khoảng bao lâu?                               |
+| Bạn có sẵn sàng trả tiền không?                   | Bạn đã từng bỏ tiền hoặc thời gian để giải quyết chuyện này chưa?               |
 
 **Lời khen không phải bằng chứng.** "Ý hay đấy, mình sẽ dùng!" không chứng minh gì. Bằng chứng là: họ đã mất thời gian thật, đã thử cách khác, đã tự làm workaround, hoặc đồng ý một bước tiếp theo cụ thể (cho xem file báo cáo thật, giới thiệu người khác).
 
@@ -272,11 +272,11 @@ Có thể nhờ AI chuyển mô tả sang Mermaid, nhưng **kiểm từng bướ
 
 **Success Metric** cần 3 phần:
 
-| Phần | Ví dụ |
-|---|---|
+| Phần                 | Ví dụ                                                    |
+| --------------------- | ---------------------------------------------------------- |
 | Baseline (hiện tại) | 90 phút/tuần, đo bằng tự bấm giờ 2 tuần gần nhất |
-| Target (muốn đạt) | dưới 30 phút/tuần |
-| Cách đo | PM tự ghi thời gian mỗi tuần trong 4 tuần pilot |
+| Target (muốn đạt)  | dưới 30 phút/tuần                                      |
+| Cách đo             | PM tự ghi thời gian mỗi tuần trong 4 tuần pilot       |
 
 Prompt phản biện Problem Statement:
 
@@ -298,22 +298,22 @@ Không viết lại thay tôi. Chỉ đặt câu hỏi và chỉ ra lỗ hổng.
 
 ### Ma trận độ mơ hồ × độ phức tạp
 
-| | Độ mơ hồ thấp | Độ mơ hồ cao |
-|---|---|---|
-| **Độ phức tạp thấp** | Rule hoặc Workflow đơn giản thường đủ | Workflow có AI ở một bước thường đủ |
-| **Độ phức tạp cao** | Workflow nhiều bước rõ ràng, chưa chắc cần Agent | Agent có thể phù hợp, nhưng cần boundary, người kiểm tra và phương án quay về rất rõ |
+|                                 | Độ mơ hồ thấp                                       | Độ mơ hồ cao                                                                                     |
+| ------------------------------- | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| **Độ phức tạp thấp** | Rule hoặc Workflow đơn giản thường đủ            | Workflow có AI ở một bước thường đủ                                                         |
+| **Độ phức tạp cao**   | Workflow nhiều bước rõ ràng, chưa chắc cần Agent | Agent có thể phù hợp, nhưng cần boundary, người kiểm tra và phương án quay về rất rõ |
 
 - **Độ mơ hồ cao**: nhiều đầu ra khác nhau vẫn chấp nhận được (viết narrative). Thấp: có đúng/sai rõ (phân loại 5 nhóm cố định).
 - **Độ phức tạp cao**: 3+ bước nối tiếp, 3+ nguồn dữ liệu, bước sau phụ thuộc bước trước.
 
 ### No AI / Rule / Workflow / Agent *(Anthropic, Building Effective Agents)*
 
-| Mức | Là gì |
-|---|---|
-| **No AI** | Sửa quy trình, template, checklist, phân công lại |
-| **Rule** | Logic cố định: if/else, công thức, script, automation không có AI |
+| Mức               | Là gì                                                                                 |
+| ------------------ | --------------------------------------------------------------------------------------- |
+| **No AI**    | Sửa quy trình, template, checklist, phân công lại                                  |
+| **Rule**     | Logic cố định: if/else, công thức, script, automation không có AI                |
 | **Workflow** | Các bước **định sẵn bằng code**; AI làm một hoặc vài bước trong đó |
-| **Agent** | AI **tự quyết bước tiếp theo**, tự chọn công cụ, tự lặp đến khi xong |
+| **Agent**    | AI **tự quyết bước tiếp theo**, tự chọn công cụ, tự lặp đến khi xong |
 
 Nguyên tắc: **bắt đầu từ mức đơn giản nhất**, chỉ lên mức trên khi có bằng chứng mức dưới không đủ. Mỗi mức lên thêm là thêm chi phí, độ trễ và cách hỏng mới.
 
@@ -337,11 +337,11 @@ Tách bước AI thành: **Prediction** (AI đoán/tạo gì) → **Judgment** (
 
 Với AI, "chạy được" chưa đủ. Viết 3–5 tiêu chí xác định đầu ra nào **đạt**, đầu ra nào **không đạt**. Ví dụ cho bài báo cáo tuần:
 
-| Tiêu chí | Đạt | Không đạt |
-|---|---|---|
-| Đúng số liệu | Mọi con số khớp Jira/Sheets | Có con số AI tự suy ra hoặc làm tròn sai |
-| Có rủi ro | Nêu ít nhất 1 rủi ro hoặc blocker nếu có trong dữ liệu | Bỏ qua blocker có trong Slack |
-| Không bịa | Mọi nhận định có nguồn trong input | Có nhận định không có trong input |
+| Tiêu chí       | Đạt                                                           | Không đạt                                   |
+| ---------------- | --------------------------------------------------------------- | ---------------------------------------------- |
+| Đúng số liệu | Mọi con số khớp Jira/Sheets                                  | Có con số AI tự suy ra hoặc làm tròn sai |
+| Có rủi ro      | Nêu ít nhất 1 rủi ro hoặc blocker nếu có trong dữ liệu | Bỏ qua blocker có trong Slack                |
+| Không bịa      | Mọi nhận định có nguồn trong input                        | Có nhận định không có trong input        |
 
 Nếu không viết được tiêu chí đánh giá, nhóm chưa hiểu đủ "tốt" nghĩa là gì, và đó là dấu hiệu nên chọn **Not Yet**.
 
@@ -360,12 +360,12 @@ Thêm 3 trường so với v0: AI intervention point, mức chọn, rủi ro và
 
 ### Quyết định theo 4 rủi ro *(Marty Cagan, SVPG)*
 
-| Rủi ro | Câu hỏi |
-|---|---|
-| **Value** | Người dùng có thật sự cần và sẽ dùng không? |
-| **Usability** | Họ có dùng được không, có hiểu và sửa được đầu ra của AI không? |
-| **Feasibility** | Có đủ dữ liệu, công cụ, kỹ năng không? |
-| **Viability** | Có hợp chi phí, pháp lý, quy định tổ chức không? Ai vận hành lâu dài? |
+| Rủi ro               | Câu hỏi                                                                           |
+| --------------------- | ----------------------------------------------------------------------------------- |
+| **Value**       | Người dùng có thật sự cần và sẽ dùng không?                              |
+| **Usability**   | Họ có dùng được không, có hiểu và sửa được đầu ra của AI không?   |
+| **Feasibility** | Có đủ dữ liệu, công cụ, kỹ năng không?                                    |
+| **Viability**   | Có hợp chi phí, pháp lý, quy định tổ chức không? Ai vận hành lâu dài? |
 
 - **Go**: không rủi ro nào ở mức Cao, có pilot nhỏ nhất rõ ràng.
 - **Not Yet**: có rủi ro Cao nhưng kiểm chứng được nhanh. Ghi rõ cần kiểm chứng gì.
